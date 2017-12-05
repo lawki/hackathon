@@ -41,7 +41,7 @@
         </li>
 
         <li class="nav-item" *ngIf="authService.adminLoggedIn()">
-          <a class="nav-link" routerLink="/admin-login" (click)="onAdminLogoutClick()" routerLinkActive="active">ALogout</a>
+          <a class="nav-link" routerLink="/admin-login" (click)="onAdminLogoutClick()" routerLinkActive="active">Admin Logout</a>
         </li>
         <li class="nav-item" *ngIf="authService.hostLoggedIn()">
           <a class="nav-link" routerLink="/host-login" (click)="onHostLogoutClick()" routerLinkActive="active">HLogout</a>
