@@ -56,7 +56,7 @@ import { EvaluatorRegisterComponent } from './components/evaluator-register/eval
     ReactiveFormsModule,
     FlashMessagesModule
   ],
-  providers: [AuthService,AuthGuard, NotAuthGuard,AdminAuthGuard,AdminNotAuthGuard,EvaluatorAuthGuard,EvaluatorNotAuthGuard],
+  providers: [AuthService,AuthGuard, NotAuthGuard,AdminAuthGuard,AdminNotAuthGuard,EvaluatorAuthGuard,EvaluatorNotAuthGuard,HostAuthGuard,HostNotAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
