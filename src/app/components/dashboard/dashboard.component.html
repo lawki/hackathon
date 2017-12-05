@@ -1,0 +1,17 @@
+        <table >
+            <thead>
+                <tr>
+                    <th >Username</th>
+					<th >Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let user of users'>
+
+                    <td>{{ user.username }}</td>
+					<td>{{ user.email }}</td>
+					<td><a (click)="deleteUser(user._id)" class="btn btn-xs btn-danger">Delete</a></td>
+					
+                </tr>
+            </tbody>
+        </table>

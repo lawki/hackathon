@@ -1,0 +1,37 @@
+<div class="card card-login mx-auto mt-5">
+	<!-- Custom Success/Error Message -->
+	<div [ngClass]="messageClass">
+    {{ message }}
+	</div>
+	
+      <div class="card-header">Host Login</div>
+      <div class="card-body">
+        <form [formGroup]="form" (submit)="onHostLoginSubmit()">
+		
+          <div class="form-group">
+            <label for="host_username">Host username</label>
+			<div [ngClass]="{'has-error': form.controls.host_username.errors && form.controls.host_username.dirty, 'has-success': form.controls.host_username.valid && form.controls.host_username.dirty }">
+				<input class="form-control" type="text" name="host_username" formControlName="host_username" />
+				<!-- Validation -->
+				<ul style="color:red" class="help-block">
+					<li *ngIf="form.controls.host_username.errors?.required && form.controls.host_username.dirty">This field is required.</li>
+				</ul>
+			</div>
+		  </div>
+		  
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+			<div [ngClass]="{'has-error': form.controls.host_password.errors && form.controls.host_password.dirty, 'has-success': form.controls.host_password.valid && form.controls.host_password.dirty }">
+				<input class="form-control" type="password" name="host_password" formControlName="host_password" />
+				<!-- Validation -->
+				<ul style="color:red" class="help-block">
+					<li *ngIf="form.controls.host_password.errors?.required && form.controls.host_password.dirty">This field is required.</li>
+				</ul>
+			</div>
+		  </div>
+		  
+          <button [disabled]="!form.valid"  type="submit" class="btn btn-primary btn-block"  value="Login">Login</button>
+		  
+        </form>
+      </div>
+    </div>
