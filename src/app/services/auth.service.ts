@@ -92,6 +92,23 @@ export class AuthService {
   }
 
 
+  registerEvent(event) {
+    return this.http.post(this.domain + 'authentication/add-event', event).map(res => res.json());
+  }
+  getEvents() {
+    return this.http.get(this.domain + 'authentication/events').map(res => res.json());
+   }
+   deleteEvent(_id: any) {
+    return this.http.delete(this.domain + 'authentication/delete_event/' + _id).map(res => res.json());
+  }
+  
+  getHosts() {
+    return this.http.get(this.domain + 'authentication/hosts').map(res => res.json());
+   }
+   deleteHost(_id: any) {
+    return this.http.delete(this.domain + 'authentication/delete_host/' + _id).map(res => res.json());
+  }
+  
 
   
   // Function to get token from client local storage

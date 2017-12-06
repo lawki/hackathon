@@ -1,0 +1,17 @@
+<table >
+  <thead>
+      <tr>
+          <th >Host</th>
+          <th >Email</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor='let host of hosts'>
+
+          <td>{{ host.host_username }}</td>
+<td>{{ host.host_email }}</td>
+<td><a (click)="deleteHost(host._id)" class="btn btn-xs btn-danger">Delete</a></td>
+
+      </tr>
+  </tbody>
+</table>

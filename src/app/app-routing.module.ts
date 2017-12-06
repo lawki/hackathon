@@ -21,6 +21,9 @@ import { HostAuthGuard } from './guards/host_auth.guard';
 import { HostNotAuthGuard } from './guards/host_notAuth.guard';
 import { EvaluatorAuthGuard } from './guards/evaluator_auth.guard';
 import { EvaluatorNotAuthGuard } from './guards/evaluator_notAuth.guard';
+import { AddEventComponent } from './components/add-event/add-event.component';
+import { ViewEventsComponent } from './components/view-events/view-events.component';
+import { ViewHostsComponent } from './components/view-hosts/view-hosts.component';
 
 const appRoutes: Routes = [
   {
@@ -31,6 +34,16 @@ const appRoutes: Routes = [
     path: 'dashboard',
     component: DashboardComponent, // Dashboard Route,
 	  canActivate: [AuthGuard] // User must be logged in to view this route
+  },
+  {
+    path: 'view-events',
+    component: ViewEventsComponent, // Dashboard Route,
+	  canActivate: [AdminAuthGuard] // User must be logged in to view this route
+  },
+  {
+    path: 'view-hosts',
+    component: ViewHostsComponent, // Dashboard Route,
+	  canActivate: [AdminAuthGuard] // User must be logged in to view this route
   },
   {
     path: 'register',
@@ -87,6 +100,11 @@ const appRoutes: Routes = [
     path: 'evaluator-dashboard',
     component: EvaluatorDashboardComponent, // Register Route
     canActivate: [EvaluatorAuthGuard] // User must be logged in to view this route
+  },
+  {
+    path: 'add-event',
+    component: AddEventComponent, // Register Route
+    canActivate: [AdminAuthGuard] // User must be logged in to view this route
   },
   { path: '**', component: HomeComponent } // "Catch-All" Route
 ];

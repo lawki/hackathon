@@ -1,0 +1,19 @@
+<table >
+  <thead>
+      <tr>
+          <th >Title</th>
+          <th >Host</th>
+          <th >Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor='let event of events'>
+
+          <td>{{ event.event_title }}</td>
+          <td>{{ event.host_username }}</td>
+          <td>{{ event.event_description }}</td>
+          <td><a (click)="deleteEvent(event._id)" class="btn btn-xs btn-danger">Delete</a></td>
+
+      </tr>
+  </tbody>
+</table>
