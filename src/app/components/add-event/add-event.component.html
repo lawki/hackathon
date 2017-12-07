@@ -21,10 +21,12 @@
         <div class="form-group">
           <label for="exampleInputUsername">Host Name</label>
           <div>
-           <input class="form-control" name="host_username" formControlName="host_username" id="host_username" type="text" placeholder="Enter Host username">
-           <ul class="help-block" style="color:red">
-            <li *ngIf="form.controls.host_username.errors?.required && form.controls.host_username.dirty">This field is required</li>
-            </ul>
+            <select class="form-control" formControlName="host_username" name="host_username" ngModel="noption">
+              <option value="noption" disabled>Select host</option>
+              <option *ngFor="let host of hosts"  [value]="host.host_username">
+                {{host.host_username}}
+              </option>
+            </select>
             </div>
           </div>
         

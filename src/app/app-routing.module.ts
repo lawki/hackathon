@@ -24,7 +24,7 @@ import { EvaluatorNotAuthGuard } from './guards/evaluator_notAuth.guard';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { ViewEventsComponent } from './components/view-events/view-events.component';
 import { ViewHostsComponent } from './components/view-hosts/view-hosts.component';
-
+import { ViewHostEventsComponent } from './components/view-host-events/view-host-events.component';
 const appRoutes: Routes = [
   {
     path: '',
@@ -39,6 +39,11 @@ const appRoutes: Routes = [
     path: 'view-events',
     component: ViewEventsComponent, // Dashboard Route,
 	  canActivate: [AdminAuthGuard] // User must be logged in to view this route
+  },
+  {
+    path: 'view-host-events',
+    component: ViewHostEventsComponent, // Dashboard Route,
+	  canActivate: [HostAuthGuard] // User must be logged in to view this route
   },
   {
     path: 'view-hosts',

@@ -7,6 +7,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
   domain = "http://localhost:8080/";
   authToken;
+  authToken2;
   user;
   options;
 
@@ -23,13 +24,16 @@ export class AuthService {
       })
     });
   }
-  
-  
-  // Function to get user's profile data
+  // Function to get token from client local storage
+  loadToken() {
+    this.authToken = localStorage.getItem('token');; // Get token and asssign to variable to be used elsewhere
+  }
+   // Function to get user's profile data
   getProfile() {
     this.createAuthenticationHeaders(); // Create headers before sending to API
     return this.http.get(this.domain + 'authentication/profile', this.options).map(res => res.json());
   }
+
   
   getUsers() {
    return this.http.get(this.domain + 'authentication/dashboard').map(res => res.json());
@@ -98,6 +102,11 @@ export class AuthService {
   getEvents() {
     return this.http.get(this.domain + 'authentication/events').map(res => res.json());
    }
+   getHostEvents(host_username: any) {
+    return this.http.get(this.domain + 'authentication/get_host_events/'+ host_username).map(res => res.json());
+   }
+   
+
    deleteEvent(_id: any) {
     return this.http.delete(this.domain + 'authentication/delete_event/' + _id).map(res => res.json());
   }
@@ -111,10 +120,6 @@ export class AuthService {
   
 
   
-  // Function to get token from client local storage
-  loadToken() {
-    this.authToken = localStorage.getItem('token');; // Get token and asssign to variable to be used elsewhere
-  }
   
   // Function to register user accounts
   registerUser(user) {

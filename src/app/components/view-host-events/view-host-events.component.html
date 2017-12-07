@@ -1,0 +1,18 @@
+<table >
+  <thead>
+      <tr>
+          <th >Title</th>
+          <th >Host</th>
+          <th >Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor='let host_event of host_events'>
+
+          <td>{{ host_event.event_title }}</td>
+          <td>{{ host_event.host_username }}</td>
+          <td>{{ host_event.event_description }}</td>
+
+      </tr>
+  </tbody>
+</table>

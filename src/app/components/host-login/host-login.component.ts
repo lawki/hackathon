@@ -61,6 +61,7 @@ export class HostLoginComponent implements OnInit {
         this.messageClass = 'alert alert-success'; // Set bootstrap success class
         this.message = data.message; // Set success message
         // Function to store user's token in client local storage
+        console.log(data.host);
         this.authService.storeHostData(data.token3, data.host);
         // After 2 seconds, redirect to dashboard page
         setTimeout(() => { 

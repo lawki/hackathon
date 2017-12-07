@@ -32,6 +32,7 @@ import { EvaluatorRegisterComponent } from './components/evaluator-register/eval
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { ViewEventsComponent } from './components/view-events/view-events.component';
 import { ViewHostsComponent } from './components/view-hosts/view-hosts.component';
+import { ViewHostEventsComponent } from './components/view-host-events/view-host-events.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ViewHostsComponent } from './components/view-hosts/view-hosts.component
     EvaluatorRegisterComponent,
     AddEventComponent,
     ViewEventsComponent,
-    ViewHostsComponent
+    ViewHostsComponent,
+    ViewHostEventsComponent
   ],
   imports: [
     BrowserModule,

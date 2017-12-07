@@ -15,7 +15,8 @@ export class AddEventComponent implements OnInit {
   message;
   messageClass;
   processing = false;
-  hosts: string[];
+  hosts: any[]= new Array;
+  selectedModule: any = null;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -77,6 +78,7 @@ export class AddEventComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.authService.getHosts().subscribe(hosts => this.hosts=hosts);
   }
 
 }
