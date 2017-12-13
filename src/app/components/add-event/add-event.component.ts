@@ -16,7 +16,6 @@ export class AddEventComponent implements OnInit {
   messageClass;
   processing = false;
   hosts: any[]= new Array;
-  selectedModule: any = null;
   
   constructor(
     private formBuilder: FormBuilder,

@@ -9,9 +9,12 @@
   <tbody>
       <tr *ngFor='let host_event of host_events'>
 
-          <td>{{ host_event.event_title }}</td>
+          <td><a [routerLink]="['/event-page',host_event._id]">{{ host_event.event_title }}</a></td>
           <td>{{ host_event.host_username }}</td>
           <td>{{ host_event.event_description }}</td>
+          <td><a [routerLink]="['/configure-event',host_event._id]" class="btn btn-xs btn-primary">Configure</a></td>
+          <td><a [routerLink]="['/event-page',host_event._id]" class="btn btn-xs btn-danger">Delete</a></td>
+          
 
       </tr>
   </tbody>

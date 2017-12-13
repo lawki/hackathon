@@ -102,6 +102,9 @@ export class AuthService {
   getEvents() {
     return this.http.get(this.domain + 'authentication/events').map(res => res.json());
    }
+   getEvent(_id:any) {
+    return this.http.get(this.domain + 'authentication/events/'+ _id).map(res => res.json());
+   }
    getHostEvents(host_username: any) {
     return this.http.get(this.domain + 'authentication/get_host_events/'+ host_username).map(res => res.json());
    }

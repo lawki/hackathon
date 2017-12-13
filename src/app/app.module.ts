@@ -33,6 +33,8 @@ import { AddEventComponent } from './components/add-event/add-event.component';
 import { ViewEventsComponent } from './components/view-events/view-events.component';
 import { ViewHostsComponent } from './components/view-hosts/view-hosts.component';
 import { ViewHostEventsComponent } from './components/view-host-events/view-host-events.component';
+import { EventPageComponent } from './components/event-page/event-page.component';
+import { ConfigureEventComponent } from './components/configure-event/configure-event.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { ViewHostEventsComponent } from './components/view-host-events/view-host
     AddEventComponent,
     ViewEventsComponent,
     ViewHostsComponent,
-    ViewHostEventsComponent
+    ViewHostEventsComponent,
+    EventPageComponent,
+    ConfigureEventComponent
   ],
   imports: [
     BrowserModule,

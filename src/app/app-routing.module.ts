@@ -25,10 +25,23 @@ import { AddEventComponent } from './components/add-event/add-event.component';
 import { ViewEventsComponent } from './components/view-events/view-events.component';
 import { ViewHostsComponent } from './components/view-hosts/view-hosts.component';
 import { ViewHostEventsComponent } from './components/view-host-events/view-host-events.component';
+import { EventPageComponent } from './components/event-page/event-page.component';
+import { ConfigureEventComponent } from './components/configure-event/configure-event.component';
+
 const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent // Default Route
+  },
+  {
+    path: 'event-page/:_id',
+    component: EventPageComponent, // Dashboard Route,
+	  canActivate: [HostAuthGuard] // User must be logged in to view this route
+  },
+  {
+    path: 'configure-event/:_id',
+    component: ConfigureEventComponent, // Dashboard Route,
+	  canActivate: [HostAuthGuard] // User must be logged in to view this route
   },
   {
     path: 'dashboard',
