@@ -35,6 +35,9 @@ import { ViewHostsComponent } from './components/view-hosts/view-hosts.component
 import { ViewHostEventsComponent } from './components/view-host-events/view-host-events.component';
 import { EventPageComponent } from './components/event-page/event-page.component';
 import { ConfigureEventComponent } from './components/configure-event/configure-event.component';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+
+
 
 @NgModule({
   declarations: [
@@ -66,7 +69,8 @@ import { ConfigureEventComponent } from './components/configure-event/configure-
 	  FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FlashMessagesModule
+    FlashMessagesModule,
+    AngularDateTimePickerModule
   ],
   providers: [AuthService,AuthGuard, NotAuthGuard,AdminAuthGuard,AdminNotAuthGuard,EvaluatorAuthGuard,EvaluatorNotAuthGuard,HostAuthGuard,HostNotAuthGuard],
   bootstrap: [AppComponent]

@@ -105,6 +105,21 @@ export class AuthService {
    getEvent(_id:any) {
     return this.http.get(this.domain + 'authentication/events/'+ _id).map(res => res.json());
    }
+   updateEvent(updatedEvent:any) {
+    var body={
+      event_title: updatedEvent.event_title,
+      host_username: updatedEvent.host_username,
+      event_description: updatedEvent.event_description,
+      start: updatedEvent.start,
+      end: updatedEvent.end,
+      location: updatedEvent.location,
+      _id: updatedEvent._id,
+      max_team_members: updatedEvent.max_team_members,
+      evaluator_username: updatedEvent.evaluator_username
+    };
+    console.log(body);
+    return this.http.put(this.domain + 'authentication/update-event/'+ body._id,body);
+   }
    getHostEvents(host_username: any) {
     return this.http.get(this.domain + 'authentication/get_host_events/'+ host_username).map(res => res.json());
    }
@@ -116,6 +131,10 @@ export class AuthService {
   
   getHosts() {
     return this.http.get(this.domain + 'authentication/hosts').map(res => res.json());
+   }
+
+   getEvaluators() {
+    return this.http.get(this.domain + 'authentication/evaluators').map(res => res.json());
    }
    deleteHost(_id: any) {
     return this.http.delete(this.domain + 'authentication/delete_host/' + _id).map(res => res.json());

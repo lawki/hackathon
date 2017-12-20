@@ -16,7 +16,10 @@ export class EventPageComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       this._id = params['_id'];
   });
-    this.authService.getEvent(this._id).subscribe(event=>this.event=event);
+    this.authService.getEvent(this._id).subscribe(event=>
+      {
+        this.event=event;
+      });
   }
 
 }

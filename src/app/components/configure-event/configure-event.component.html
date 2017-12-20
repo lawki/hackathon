@@ -1,13 +1,29 @@
 <div class="card card-register mx-auto mt-5">
-	<!-- Custom Success/Error Message -->
-	<div [ngClass]="messageClass">
-    {{ message }}
-  </div>
-
+    
     <div class="card-header">Configure Event</div>
+     	<!-- Custom Success/Error Message -->
+	  <div [ngClass]="messageClass">
+      {{ message }}
+    </div>
+  
+
+    <div class="form-group"  style="margin-left:20px;margin-top:20px;margin-right:20px">
+        <label for="exampleInputUsername">Start Date and Time</label>
+        <angular2-date-picker [ngModelOptions]="{standalone: true}" (onDateSelect)="onStartDateSelect($event)" [(ngModel)]="start" [settings]="settings"></angular2-date-picker>
+    </div>
+      
+
+    <div class="form-group" style="margin-left:20px;margin-top:0px;margin-right:20px;margin-bottom:0px">
+        <label for="exampleInputUsername">End Date and Time</label>
+        <angular2-date-picker [ngModelOptions]="{standalone: true}" (onDateSelect)="onEndDateSelect($event)" [(ngModel)]="end" [settings]="settings"></angular2-date-picker>
+    </div>
+ 
+ 
+    
     <div class="card-body">
       <form [formGroup]="form" (submit)="onConfigureRegisterSubmit()">
-	  
+         
+           
         <div class="form-group">
         <label for="exampleInputUsername">Event Title</label>
         <div>
@@ -25,7 +41,6 @@
             </div>
           </div>
         
-          
           <div class="form-group">
             <label for="exampleInputUsername">Event Description</label>
             <div>
@@ -36,25 +51,8 @@
               </div>
             </div>
 
-            <div class="form-group">
-                <label for="start_date">Start Date</label>
-                <div>
-                 <input class="form-control" [(ngModel)]="event.start_date" name="start_date" formControlName="start_date" id="start_date" type="date" placeholder="Enter Start Date">
-                 <ul class="help-block" style="color:red">
-                  <li *ngIf="form.controls.start_date.errors?.required && form.controls.start_date.dirty">This field is required</li>
-                  </ul>
-                  </div>
-            </div>
-
-            <div class="form-group">
-                <label for="end_date">End Date</label>
-                <div>
-                 <input class="form-control" [(ngModel)]="event.end_date" name="end_date" formControlName="end_date" id="end_date" type="date" placeholder="Enter End Date">
-                 <ul class="help-block" style="color:red">
-                  <li *ngIf="form.controls.end_date.errors?.required && form.controls.end_date.dirty">This field is required</li>
-                  </ul>
-                  </div>
-            </div>
+            
+            
 
             <div class="form-group">
                 <label for="location">Location</label>
@@ -65,9 +63,29 @@
                   </ul>
                   </div>
                 </div>
-          
+
+                <div class="form-group">
+                    <label for="max_team_members">Max Team Members</label>
+                    <div>
+                     <input class="form-control" [(ngModel)]="event.max_team_members" name="max_team_members" formControlName="max_team_members" id="max_team_members" type="number" placeholder="Enter number of maximum team members">
+                     <ul class="help-block" style="color:red">
+                      <li *ngIf="form.controls.max_team_members.errors?.required && form.controls.max_team_members.dirty">This field is required</li>
+                      </ul>
+                      </div>
+                    </div>
             
-                
+                    <div class="form-group">
+                        <label for="exampleInputUsername">Evaluator</label>
+                        <div>
+                          <select class="form-control" formControlName="evaluator_username" name="evaluator_username" ngModel="noption">
+                            <option value="noption" disabled>Select Evaluator</option>
+                            <option *ngFor="let evaluator of evaluators"  [value]="evaluator.evaluator_username">
+                              {{evaluator.evaluator_username}}
+                            </option>
+                          </select>
+                          </div>
+                        </div>
+                      
 
         <div class="text-center">
        <button  [disabled]="!form.valid || processing" type="submit" class="btn btn-primary btn-block" value="submit">Register</button>
@@ -75,3 +93,5 @@
       </form>
     </div>
   </div>
+
+

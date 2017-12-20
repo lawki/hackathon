@@ -3,4 +3,9 @@
   <li class="list-group-item">event title: {{ event.event_title }}</li>
   <li class="list-group-item">event host: {{ event.host_username }}</li>
   <li class="list-group-item">event host: {{ event.event_description }}</li>
+  <li class="list-group-item">Start Date: {{ event.start | date:'dd-MM-yyyy' }}</li>
+  <li class="list-group-item">Start Time: {{ event.start | date:'HH:mm:ss'  }}</li>
+  <li class="list-group-item">End Date: {{ event.end | date:'dd-MM-yyyy' }}</li>
+  <li class="list-group-item">End Time: {{ event.end | date:'HH:mm:ss'  }}</li>
+  <li class="list-group-item">Location : {{ event.location }}</li>
 </ul>
