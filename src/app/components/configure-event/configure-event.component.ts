@@ -55,6 +55,9 @@ export class ConfigureEventComponent implements OnInit {
       event_description: [''],
       location:[''],
       max_team_members:[''],
+      max_ideas:[''],
+      prize:[''],
+      publish:[''],
       evaluator_username:['']
 		});
 		
@@ -71,6 +74,9 @@ export class ConfigureEventComponent implements OnInit {
       location: this.form.get('location').value, // Password input field
       _id:this.event._id,
       max_team_members: this.form.get('max_team_members').value,
+      max_ideas: this.form.get('max_ideas').value,
+      prize: this.form.get('prize').value,
+      publish: this.form.get('publish').value,
       evaluator_username: this.form.get('evaluator_username').value,
     }
     console.log(updated_event);

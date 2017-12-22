@@ -115,6 +115,9 @@ export class AuthService {
       location: updatedEvent.location,
       _id: updatedEvent._id,
       max_team_members: updatedEvent.max_team_members,
+      max_ideas: updatedEvent.max_ideas,
+      prize: updatedEvent.prize,
+      publish: updatedEvent.publish,
       evaluator_username: updatedEvent.evaluator_username
     };
     console.log(body);

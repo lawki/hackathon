@@ -1,5 +1,61 @@
-<h2 class="page-header">Profile Page</h2>
-<ul class="list-group">
-  <li class="list-group-item">Username: {{ username }}</li>
-  <li class="list-group-item">Email: {{ email }}</li>
-</ul>
+<div style="margin-left:20px;margin-top:20px">
+<h2 class="page-header">Available Events</h2>
+<table class="table table-bordered table-hover table-sm table-responsive" >
+    <thead>
+        <tr>
+            <th >Title</th>
+            <th >Start Date and Time</th>
+            <th >End Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let event of events'>
+  
+            <td *ngIf="event.live == 'true'"  >{{ event.event_title }}</td>
+            <td *ngIf="event.live == 'true'"  >{{ event.start  | date: 'dd-MM-yyyy HH:mm'}}</td>
+            <td *ngIf="event.live == 'true'" > {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
+  
+        </tr>
+    </tbody>
+  </table>
+  <br>
+  <h2 class="page-header">Future Events</h2>
+  <table  class="table table-bordered table-hover table-sm table-responsive"  >
+      <thead>
+          <tr>
+              <th >Title</th>
+              <th >Start Date and Time</th>
+              <th >End Date and Time</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor='let event of events'>
+    
+              <td *ngIf="event.future == 'true'"  >{{ event.event_title }}</td>
+              <td *ngIf="event.future == 'true'"  >{{ event.start| date: 'dd-MM-yyyy HH:mm' }}</td>
+              <td *ngIf="event.future == 'true'" > {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
+    
+          </tr>
+      </tbody>
+    </table>
+<br>
+  <h2 class="page-header">Archived Events</h2>
+  <table  class="table table-bordered table-hover table-sm table-responsive"  >
+      <thead>
+          <tr>
+              <th >Title</th>
+              <th >Start Date and Time</th>
+              <th >End Date and Time</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor='let event of events'>
+    
+              <td *ngIf="event.archived == 'true'"  >{{ event.event_title }}</td>
+              <td *ngIf="event.archived == 'true'"  >{{ event.start | date: 'dd-MM-yyyy HH:mm'}}</td>
+              <td *ngIf="event.archived == 'true'" > {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
+    
+          </tr>
+      </tbody>
+    </table>
+  </div>

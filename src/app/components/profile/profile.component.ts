@@ -8,19 +8,17 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  username = '';
-  email = '';
+  events: any[]= new Array;
 
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit() {
-    // Once component loads, get user's data to display on profile
-    this.authService.getProfile().subscribe(profile => {
-      this.username = profile.user.username; // Set username
-      this.email = profile.user.email; // Set e-mail
-    });
+    this.authService.getEvents().subscribe(data => 
+      {
+      this.events=data.events
+      });
   }
 
 }
