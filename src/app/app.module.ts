@@ -36,7 +36,9 @@ import { ViewHostEventsComponent } from './components/view-host-events/view-host
 import { EventPageComponent } from './components/event-page/event-page.component';
 import { ConfigureEventComponent } from './components/configure-event/configure-event.component';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
-
+import { TeamRegistrationComponent } from './components/team-registration/team-registration.component';
+import { SubmitArtifactComponent } from './components/submit-artifact/submit-artifact.component';
+import { FileUploadModule  } from 'ng2-file-upload';
 
 
 @NgModule({
@@ -61,7 +63,9 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
     ViewHostsComponent,
     ViewHostEventsComponent,
     EventPageComponent,
-    ConfigureEventComponent
+    ConfigureEventComponent,
+    TeamRegistrationComponent,
+    SubmitArtifactComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,8 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
     AppRoutingModule,
     ReactiveFormsModule,
     FlashMessagesModule,
-    AngularDateTimePickerModule
+    AngularDateTimePickerModule,
+    FileUploadModule
   ],
   providers: [AuthService,AuthGuard, NotAuthGuard,AdminAuthGuard,AdminNotAuthGuard,EvaluatorAuthGuard,EvaluatorNotAuthGuard,HostAuthGuard,HostNotAuthGuard],
   bootstrap: [AppComponent]

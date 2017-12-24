@@ -99,8 +99,14 @@ export class AuthService {
   registerEvent(event) {
     return this.http.post(this.domain + 'authentication/add-event', event).map(res => res.json());
   }
+  registerTeam(team) {
+    return this.http.post(this.domain + 'authentication/team_registration', team).map(res => res.json());
+  }
   getEvents() {
     return this.http.get(this.domain + 'authentication/events').map(res => res.json());
+   }
+   getTeams(username:any) {
+    return this.http.get(this.domain + 'authentication/team_details/' + username).map(res => res.json());
    }
    getEvent(_id:any) {
     return this.http.get(this.domain + 'authentication/events/'+ _id).map(res => res.json());

@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 export class ProfileComponent implements OnInit {
 
   events: any[]= new Array;
+  teams: any[]= new Array;
 
   constructor(
     private authService: AuthService
@@ -19,6 +20,8 @@ export class ProfileComponent implements OnInit {
       {
       this.events=data.events
       });
+
+      this.authService.getTeams(JSON.parse(localStorage.getItem('user')).username).subscribe(teams => this.teams=teams);
   }
 
 }

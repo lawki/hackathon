@@ -13,7 +13,7 @@ export class ViewEventsComponent implements OnInit {
     }
   
     ngOnInit() {
-        this.authService.getEvents().subscribe(events => this.events=events);
+        this.authService.getEvents().subscribe(events => this.events=events.events);
     }
     deleteEvent(_id: any) {
       this.authService.deleteEvent(_id)

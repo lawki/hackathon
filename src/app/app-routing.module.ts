@@ -27,6 +27,8 @@ import { ViewHostsComponent } from './components/view-hosts/view-hosts.component
 import { ViewHostEventsComponent } from './components/view-host-events/view-host-events.component';
 import { EventPageComponent } from './components/event-page/event-page.component';
 import { ConfigureEventComponent } from './components/configure-event/configure-event.component';
+import { TeamRegistrationComponent } from './components/team-registration/team-registration.component';
+import { SubmitArtifactComponent } from './components/submit-artifact/submit-artifact.component';
 
 const appRoutes: Routes = [
   {
@@ -34,9 +36,16 @@ const appRoutes: Routes = [
     component: HomeComponent // Default Route
   },
   {
+    path: 'team-registration/:_id',
+    component: TeamRegistrationComponent // Default Route
+  },
+  {
+    path: 'submit-artifact/:_id',
+    component: SubmitArtifactComponent // Default Route
+  },
+  {
     path: 'event-page/:_id',
     component: EventPageComponent, // Dashboard Route,
-	  canActivate: [HostAuthGuard] // User must be logged in to view this route
   },
   {
     path: 'configure-event/:_id',
@@ -51,7 +60,6 @@ const appRoutes: Routes = [
   {
     path: 'view-events',
     component: ViewEventsComponent, // Dashboard Route,
-	  canActivate: [AdminAuthGuard] // User must be logged in to view this route
   },
   {
     path: 'view-host-events',
