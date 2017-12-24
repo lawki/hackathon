@@ -38,6 +38,9 @@ export class AuthService {
   getUsers() {
    return this.http.get(this.domain + 'authentication/dashboard').map(res => res.json());
   }
+  getFiles() {
+    return this.http.get(this.domain + 'authentication/files').map(res => res.json());
+   }
   
   deleteUser(_id: any) {
     return this.http.delete(this.domain + 'authentication/delete_user/' + _id).map(res => res.json());

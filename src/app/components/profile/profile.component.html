@@ -87,3 +87,19 @@
           </tr>
       </tbody>
     </table>
+
+    <h2 class="page-header">Uploaded Files</h2>
+    <table  class="table table-bordered table-hover table-sm table-responsive"  >
+        <thead>
+            <tr>
+                <th >Files</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let file of files'>
+                <td><a href="http://localhost:8080/{{file.file_name}}" target="_blank">{{file.file_name}}</a></td>
+                
+              
+            </tr>
+        </tbody>
+      </table>
