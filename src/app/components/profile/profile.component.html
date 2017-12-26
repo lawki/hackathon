@@ -1,70 +1,3 @@
-<h2 class="page-header">Ongoing Events</h2>
-<table class="table table-bordered table-hover table-sm table-responsive" >
-    <thead>
-        <tr>
-            <th >Title</th>
-            <th >Start Date and Time</th>
-            <th >End Date and Time</th>
-            <th ></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor='let event of events'>
-  
-            <td *ngIf="event.live == 'true'"  ><a [routerLink]="['/event-page',event._id]">{{ event.event_title }}</a></td>
-            <td *ngIf="event.live == 'true'"  >{{ event.start  | date: 'dd-MM-yyyy HH:mm'}}</td>
-            <td *ngIf="event.live == 'true'" > {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
-            <td *ngIf="event.live == 'true'"><a [routerLink]="['/team-registration',event._id]" class="btn btn-xs btn-primary">Register</a></td>
-  
-        </tr>
-    </tbody>
-  </table>
-  <br>
-  <h2 class="page-header">Future Events</h2>
-  <table  class="table table-bordered table-hover table-sm table-responsive"  >
-      <thead>
-          <tr>
-              <th >Title</th>
-              <th >Start Date and Time</th>
-              <th >End Date and Time</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor='let event of events'>
-    
-              <td *ngIf="event.future == 'true'"  ><a [routerLink]="['/event-page',event._id]">{{ event.event_title }}</a></td>
-              <td *ngIf="event.future == 'true'"  >{{ event.start| date: 'dd-MM-yyyy HH:mm' }}</td>
-              <td *ngIf="event.future == 'true'" > {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
-              <td *ngIf="event.future == 'true'"><a [routerLink]="['/team-registration',event._id]" class="btn btn-xs btn-primary">Register</a></td>
-              
-              
-
-          </tr>
-      </tbody>
-    </table>
-<br>
-  <h2 class="page-header">Archived Events</h2>
-  <table  class="table table-bordered table-hover table-sm table-responsive"  >
-      <thead>
-          <tr>
-              <th >Title</th>
-              <th >Start Date and Time</th>
-              <th >End Date and Time</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor='let event of events'>
-    
-              <td *ngIf="event.archived == 'true'"  ><a [routerLink]="['/event-page',event._id]">{{ event.event_title }}</a></td>
-              <td *ngIf="event.archived == 'true'"  >{{ event.start | date: 'dd-MM-yyyy HH:mm'}}</td>
-              <td *ngIf="event.archived == 'true'" > {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
-              
-            
-          </tr>
-      </tbody>
-    </table>
-  
-
   <h2 class="page-header">Registered Events</h2>
   <table  class="table table-bordered table-hover table-sm table-responsive"  >
       <thead>
@@ -103,3 +36,206 @@
             </tr>
         </tbody>
       </table>
+
+      <div class="box box-info" >
+            <div class="box-header with-border">
+              <h3 class="box-title">Ongoing events</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                  <tr>
+                        <th >Title</th>
+                        <th >Start Date and Time</th>
+                        <th >End Date and Time</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                        <tr *ngFor='let event of events'>
+                                
+                                          <td *ngIf="event.live == 'true'"  ><a [routerLink]="['/event-page',event._id]">{{ event.event_title }}</a></td>
+                                          <td *ngIf="event.live == 'true'"  >{{ event.start  | date: 'dd-MM-yyyy HH:mm'}}</td>
+                                          <td *ngIf="event.live == 'true'" > {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
+                                          <td *ngIf="event.live == 'true'"><a [routerLink]="['/team-registration',event._id]" class="btn btn-xs btn-primary">Register</a></td>
+                                
+                        </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-footer -->
+          </div>
+
+          <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Future events</h3>
+    
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                      <tr>
+                            <th >Title</th>
+                            <th >Start Date and Time</th>
+                            <th >End Date and Time</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                            <tr *ngFor='let event of events'>
+                                    
+                                              <td *ngIf="event.future == 'true'"  ><a [routerLink]="['/event-page',event._id]">{{ event.event_title }}</a></td>
+                                              <td *ngIf="event.future == 'true'"  >{{ event.start| date: 'dd-MM-yyyy HH:mm' }}</td>
+                                              <td *ngIf="event.future == 'true'" > {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
+                                              <td *ngIf="event.future == 'true'"><a [routerLink]="['/team-registration',event._id]" class="btn btn-xs btn-primary">Register</a></td>
+                                          
+                                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-footer -->
+              </div>
+
+          <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Archived events</h3>
+    
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                      <tr>
+                            <th >Title</th>
+                            <th >Start Date and Time</th>
+                            <th >End Date and Time</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                            <tr *ngFor='let event of events'>
+                                    
+                                              <td *ngIf="event.archived == 'true'"  ><a [routerLink]="['/event-page',event._id]">{{ event.event_title }}</a></td>
+                                              <td *ngIf="event.archived == 'true'"  >{{ event.start | date: 'dd-MM-yyyy HH:mm'}}</td>
+                                              <td *ngIf="event.archived == 'true'" > {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
+                                              
+                                            
+                            </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-footer -->
+              </div>
+          
+
+
+              <div class="row" style="margin-left:20px;margin-right:20px">
+                    <div class="col-lg-2 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-aqua">
+                        <div class="inner">
+                          <h3>150</h3>
+            
+                          <p>New Orders</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-2 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-green">
+                        <div class="inner">
+                          <h3>53<sup style="font-size: 20px">%</sup></h3>
+            
+                          <p>Bounce Rate</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-2 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-yellow">
+                        <div class="inner">
+                          <h3>44</h3>
+            
+                          <p>User Registrations</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-2 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-red">
+                        <div class="inner">
+                          <h3>65</h3>
+            
+                          <p>Unique Visitors</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <!-- ./col -->
+
+                    <div class="col-lg-2 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-red">
+                        <div class="inner">
+                          <h3>65</h3>
+            
+                          <p>Unique Visitors</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                              <div class="inner">
+                                <h3>65</h3>
+                  
+                                <p>Unique Visitors</p>
+                              </div>
+                              <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                              </div>
+                              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                          </div>
+                  </div>

@@ -39,6 +39,7 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { TeamRegistrationComponent } from './components/team-registration/team-registration.component';
 import { SubmitArtifactComponent } from './components/submit-artifact/submit-artifact.component';
 import { FileUploadModule  } from 'ng2-file-upload';
+import { AppheaderComponent } from './components/appheader/appheader.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { FileUploadModule  } from 'ng2-file-upload';
     EventPageComponent,
     ConfigureEventComponent,
     TeamRegistrationComponent,
-    SubmitArtifactComponent
+    SubmitArtifactComponent,
+    AppheaderComponent
   ],
   imports: [
     BrowserModule,

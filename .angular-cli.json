@@ -9,7 +9,10 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "bower_components",
+        "dist",
+        "plugins"
       ],
       "index": "index.html",
       "main": "main.ts",

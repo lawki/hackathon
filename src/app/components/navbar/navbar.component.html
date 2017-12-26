@@ -1,59 +1,61 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" routerLink="/home" routerLinkActive="active">Hackathon</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/home" routerLinkActive="active">Home
-          </a>
-        </li>
-        <li class="nav-item" *ngIf="authService.loggedIn()" >
-          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-        </li>
-		    <li class="nav-item" *ngIf="authService.loggedIn()">
-          <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
-        </li>
-		    <li class="nav-item" *ngIf="authService.loggedIn()">
-          <a class="nav-link" routerLink="/login" (click)="onLogoutClick()" routerLinkActive="active">Logout</a>
-        </li>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" routerLink="/home" routerLinkActive="active">Hackathon</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a routerLink="/home" routerLinkActive="active">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item" *ngIf="authService.loggedIn()">
+                    <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+                </li>
+                <li class="nav-item" *ngIf="authService.loggedIn()">
+                    <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
+                </li>
+                <li class="nav-item" *ngIf="authService.loggedIn()">
+                    <a class="nav-link" routerLink="/login" (click)="onLogoutClick()" routerLinkActive="active">Logout</a>
+                </li>
+                <li class="dropdown" *ngIf="!authService.loggedIn()&&!authService.adminLoggedIn()&&!authService.hostLoggedIn()&&!authService.evaluatorLoggedIn()" >
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active">User Login</a></li>
+                      <li><a class="dropdown-item" routerLink="/admin-login" routerLinkActive="active">Admin Login</a></li>
+                      <li><a class="dropdown-item" routerLink="/host-login" routerLinkActive="active">Host Login</a></li>
+                      <li><a class="dropdown-item" routerLink="/evaluator-login" routerLinkActive="active">Evaluator Login</a></li>
+                      
+                    </ul>
+                  </li>
+                <li class="nav-item" *ngIf="authService.adminLoggedIn()">
+                    <a class="nav-link" routerLink="/admin-dashboard" routerLinkActive="active">Admin Dashboard</a>
+                </li>
+                <li class="nav-item" *ngIf="authService.hostLoggedIn()">
+                    <a class="nav-link" routerLink="/host-dashboard" routerLinkActive="active">Host Dashboard</a>
+                </li>
+                <li class="nav-item" *ngIf="authService.evaluatorLoggedIn()">
+                    <a class="nav-link" routerLink="/evaluator-dashboard" routerLinkActive="active">Evaluator Dashboard</a>
+                </li>
 
-        <li class="nav-item dropdown" *ngIf="!authService.loggedIn()&&!authService.adminLoggedIn()&&!authService.hostLoggedIn()&&!authService.evaluatorLoggedIn()" >
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" routerLink="/login" routerLinkActive="active">User Login</a>
-            <a class="dropdown-item" routerLink="/admin-login" routerLinkActive="active">Admin Login</a>
-            <a class="dropdown-item" routerLink="/host-login" routerLinkActive="active">Host Login</a>
-            <a class="dropdown-item" routerLink="/evaluator-login" routerLinkActive="active">Evaluator Login</a>
-          </div>
-        </li>
+                <li class="nav-item" *ngIf="authService.adminLoggedIn()">
+                    <a class="nav-link" routerLink="/admin-login" (click)="onAdminLogoutClick()" routerLinkActive="active">ALogout</a>
+                </li>
+                <li class="nav-item" *ngIf="authService.hostLoggedIn()">
+                    <a class="nav-link" routerLink="/host-login" (click)="onHostLogoutClick()" routerLinkActive="active">HLogout</a>
+                </li>
+                <li class="nav-item" *ngIf="authService.evaluatorLoggedIn()">
+                    <a class="nav-link" routerLink="/evaluator-login" (click)="onEvaluatorLogoutClick()" routerLinkActive="active">ELogout</a>
+                </li>
 
-        <li class="nav-item" *ngIf="authService.adminLoggedIn()">
-          <a class="nav-link" routerLink="/admin-dashboard" routerLinkActive="active">Admin Dashboard</a>
-        </li>
-        <li class="nav-item" *ngIf="authService.hostLoggedIn()">
-          <a class="nav-link" routerLink="/host-dashboard" routerLinkActive="active">Host Dashboard</a>
-        </li>
-        <li class="nav-item" *ngIf="authService.evaluatorLoggedIn()">
-          <a class="nav-link" routerLink="/evaluator-dashboard" routerLinkActive="active">Evaluator Dashboard</a>
-        </li>
-
-        <li class="nav-item" *ngIf="authService.adminLoggedIn()">
-          <a class="nav-link" routerLink="/admin-login" (click)="onAdminLogoutClick()" routerLinkActive="active">ALogout</a>
-        </li>
-        <li class="nav-item" *ngIf="authService.hostLoggedIn()">
-          <a class="nav-link" routerLink="/host-login" (click)="onHostLogoutClick()" routerLinkActive="active">HLogout</a>
-        </li>
-        <li class="nav-item" *ngIf="authService.evaluatorLoggedIn()">
-          <a class="nav-link" routerLink="/evaluator-login" (click)="onEvaluatorLogoutClick()" routerLinkActive="active">ELogout</a>
-        </li>
-
-        <li class="nav-item" *ngIf="!authService.loggedIn()&&!authService.adminLoggedIn()&&!authService.hostLoggedIn()&&!authService.evaluatorLoggedIn()">
-          <a class="nav-link"routerLink="/register" routerLinkActive="active">Register</a>
-        </li>
-      </ul>
+                <li class="nav-item" *ngIf="!authService.loggedIn()&&!authService.adminLoggedIn()&&!authService.hostLoggedIn()&&!authService.evaluatorLoggedIn()">
+                    <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>

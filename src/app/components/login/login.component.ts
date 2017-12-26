@@ -12,7 +12,7 @@ import { AuthGuard } from '../../guards/auth.guard';
 export class LoginComponent implements OnInit {
 	
 	form:FormGroup;
-	message;
+	message = false;
 	messageClass;
 	processing = false;
 	previousUrl;
@@ -62,12 +62,12 @@ export class LoginComponent implements OnInit {
     this.authService.login(user).subscribe(data => {
       // Check if response was a success or error
       if (!data.success) {
-        this.messageClass = 'alert alert-danger'; // Set bootstrap error class
+        this.messageClass = 'alert alert-danger alert-dismissible'; // Set bootstrap error class
         this.message = data.message; // Set error message
         this.processing = false; // Enable submit button
         this.enableForm(); // Enable form for editting
       } else {
-        this.messageClass = 'alert alert-success'; // Set bootstrap success class
+        this.messageClass = 'alert alert-success alert-dismissible'; // Set bootstrap success class
         this.message = data.message; // Set success message
         // Function to store user's token in client local storage
         this.authService.storeUserData(data.token, data.user);
