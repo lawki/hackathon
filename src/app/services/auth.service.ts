@@ -38,10 +38,6 @@ export class AuthService {
   getUsers() {
    return this.http.get(this.domain + 'authentication/dashboard').map(res => res.json());
   }
-  getFiles() {
-    return this.http.get(this.domain + 'authentication/files').map(res => res.json());
-   }
-  
   deleteUser(_id: any) {
     return this.http.delete(this.domain + 'authentication/delete_user/' + _id).map(res => res.json());
   }
@@ -111,6 +107,15 @@ export class AuthService {
    getTeams(username:any) {
     return this.http.get(this.domain + 'authentication/team_details/' + username).map(res => res.json());
    }
+   getEvalEventwiseTeams(event_id:any) {
+    return this.http.get(this.domain + 'authentication/eval_eventwise_team_details/' + event_id).map(res => res.json());
+   }
+   getEvalTeamwiseSubmissions(team_id:any) {
+    return this.http.get(this.domain + 'authentication/eval_teamwise_files/' + team_id).map(res => res.json());
+   }
+   getFiles(username:any) {
+    return this.http.get(this.domain + 'authentication/files/' + username).map(res => res.json());
+   }
    getEvent(_id:any) {
     return this.http.get(this.domain + 'authentication/events/'+ _id).map(res => res.json());
    }
@@ -135,6 +140,10 @@ export class AuthService {
    getHostEvents(host_username: any) {
     return this.http.get(this.domain + 'authentication/get_host_events/'+ host_username).map(res => res.json());
    }
+   getEvaluatorEvents(evaluator_username: any) {
+    return this.http.get(this.domain + 'authentication/get_evaluator_events/'+ evaluator_username).map(res => res.json());
+   }
+   
    
 
    deleteEvent(_id: any) {

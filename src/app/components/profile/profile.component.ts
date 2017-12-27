@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
       {
       this.events=data.events
       });
-      this.authService.getFiles().subscribe(files => 
+      this.authService.getFiles(JSON.parse(localStorage.getItem('user')).username).subscribe(files => 
         {
         this.files=files;
         });

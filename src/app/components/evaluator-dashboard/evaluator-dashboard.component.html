@@ -1,3 +1,19 @@
-<p>
-  evaluator-dashboard works!
-</p>
+<table >
+    <thead>
+        <tr>
+            <th >Title</th>
+            <th >Host</th>
+            <th >Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let evaluator_event of evaluator_events'>
+  
+            <td><a [routerLink]="['/eval-eventwise-registered-teams',evaluator_event._id]">{{ evaluator_event.event_title }}</a></td>
+            <td>{{ evaluator_event.host_username }}</td>
+            <td>{{ evaluator_event.event_description }}</td>
+            
+  
+        </tr>
+    </tbody>
+  </table>

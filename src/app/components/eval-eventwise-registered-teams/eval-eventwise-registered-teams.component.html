@@ -1,0 +1,21 @@
+<table >
+    <thead>
+        <tr>
+            <th >username</th>
+            <th >Team name</th>
+            <th >Event Title</th>
+            <th >Event ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let team of teams'>
+  
+            <td>{{ team.username }}</td>
+            <td>{{ team.team_name }}</td>
+            <td>{{ team.event_title }}</td>  
+            <td>{{ team.event_id }}</td>  
+            <td><a [routerLink]="['/eval-teamwise-submissions',team._id]" class="btn btn-xs btn-primary">View Submissions</a></td>
+  
+        </tr>
+    </tbody>
+  </table>

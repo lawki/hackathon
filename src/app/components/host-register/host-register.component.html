@@ -1,66 +1,69 @@
-<div class="card card-register mx-auto mt-5">
-	<!-- Custom Success/Error Message -->
-	<div [ngClass]="messageClass">
-    {{ message }}
-  </div>
 
-    <div class="card-header">Register a Host Account</div>
-    <div class="card-body">
-      <form [formGroup]="form" (submit)="onHostRegisterSubmit()">
-	  
-        <div class="form-group">
-        <label for="exampleInputUsername">Host Username</label>
-        <div  [ngClass]="{'has-error': (form.controls.host_username.errors && form.controls.host_username.dirty), 'has-success': !form.controls.host_username.errors}">
-         <input class="form-control" name="host_username" formControlName="host_username" id="host_username" type="text" placeholder="Enter Host Username">
-         <ul class="help-block" style="color:red">
-          <li *ngIf="form.controls.host_username.errors?.required && form.controls.host_username.dirty">This field is required</li>
-              <li *ngIf="form.controls.host_username.errors?.minlength && form.controls.host_username.dirty || form.controls.host_username.errors?.maxlength && form.controls.host_username.dirty ">Minimum characters: 3, Maximum characters: 15</li>
-              <li *ngIf="form.controls.host_username.errors?.validateUsername && form.controls.host_username.dirty">Username must not have any special characters</li>
-             
-          </ul>
-           </div>
-		    </div>
-		
-        <div class="form-group">
-         <label for="exampleInputEmail1">Host Email address</label>
-         <div  [ngClass]="{'has-error': (form.controls.host_email.errors && form.controls.host_email.dirty), 'has-success': !form.controls.host_email.errors}">
-            <input class="form-control" name="host_email" formControlName="host_email" id="exampleInputEmail1" type="email" placeholder="Enter Host Email">
-            <ul class="help-block" style="color:red">
-              <li *ngIf="form.controls.host_email.errors?.required && form.controls.host_email.dirty">This field is required</li>
-                  <li *ngIf="(form.controls.host_email.errors?.minlength && form.controls.host_email.dirty || form.controls.host_email.errors?.maxlength && form.controls.host_email.dirty ) && form.controls.host_email.dirty">Minimum characters: 5, Maximum characters: 30</li>
-                  <li *ngIf="form.controls.host_email.errors?.validateEmail && form.controls.host_email.dirty">This must be a valid e-mail</li>
-               </ul>
-               </div>
-          </div>
-          
-        <div class="form-group">
-          <div class="form-row">
-            <div class="col-md-6">
-            <label for="host_password">Host Password</label>
-            <div  [ngClass]="{'has-error': (form.controls.host_password.errors && form.controls.host_password.dirty), 'has-success': !form.controls.host_password.errors}">
-     		      <input class="form-control" name="host_password" formControlName="host_password" id="host_password" type="password" placeholder="Enter host password">
-              <ul class="help-block" style="color:red">
-                  <li *ngIf="form.controls.host_password.errors?.required && form.controls.host_password.dirty">This field is required</li>
-                  <li *ngIf="form.controls.host_password.errors?.minlength && form.controls.host_password.dirty || form.controls.host_password.errors?.maxlength && form.controls.host_password.dirty ">Minimum characters: 8, Maximum characters: 35</li>
-               </ul>
-            </div>
-          </div>
-            <div class="col-md-6">
-             <label for="host_confirm">Confirm Password</label>
-             <div [ngClass]="{'has-error': (form.controls.host_confirm.errors && form.controls.host_confirm.dirty) || (form.errors?.matchingPasswords && form.controls.host_confirm.dirty), 'has-success': !form.controls.host_confirm.errors && !form.errors?.matchingPasswords}">
-              <input class="form-control" name="host_confirm" formControlName="host_confirm" id="host_confirm" type="password" placeholder="Confirm host password">
-               <ul class="help-block" style="color:red">
-			        	<li *ngIf="form.controls.host_confirm.errors?.required && form.controls.host_confirm.dirty">This field is required</li>
-			        	<li *ngIf="form.errors?.matchingPasswords && form.controls.host_confirm.dirty">Password do not match</li>
-				      </ul>
-            </div>
-          </div>
-        </div>
-        </div>
-
-        <div class="text-center">
-       <button  [disabled]="!form.valid || processing" type="submit" class="btn btn-primary btn-block" value="submit">Register</button>
-      </div>
-      </form>
+<div class="box box-primary" style="width:500px;margin:0 auto">
+    <div class="box-header with-border">
+      <h3 class="box-title">Add a Host</h3>
     </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form role="form" [formGroup]="form" (submit)="onHostRegisterSubmit()">
+      <div class="box-body">
+
+          <div class="form-group">
+              <label for="exampleInputUsername">Host Username</label>
+              <div  [ngClass]="{'has-error': (form.controls.host_username.errors && form.controls.host_username.dirty), 'has-success': !form.controls.host_username.errors}">
+               <input class="form-control" name="host_username" formControlName="host_username" id="host_username" type="text" placeholder="Enter Host Username">
+               <ul class="help-block" style="color:red">
+                <li *ngIf="form.controls.host_username.errors?.required && form.controls.host_username.dirty">This field is required</li>
+                    <li *ngIf="form.controls.host_username.errors?.minlength && form.controls.host_username.dirty || form.controls.host_username.errors?.maxlength && form.controls.host_username.dirty ">Minimum characters: 3, Maximum characters: 15</li>
+                    <li *ngIf="form.controls.host_username.errors?.validateUsername && form.controls.host_username.dirty">Username must not have any special characters</li>
+                   
+                </ul>
+                 </div>
+              </div>
+          
+              <div class="form-group">
+               <label for="exampleInputEmail1">Host Email address</label>
+               <div  [ngClass]="{'has-error': (form.controls.host_email.errors && form.controls.host_email.dirty), 'has-success': !form.controls.host_email.errors}">
+                  <input class="form-control" name="host_email" formControlName="host_email" id="exampleInputEmail1" type="email" placeholder="Enter Host Email">
+                  <ul class="help-block" style="color:red">
+                    <li *ngIf="form.controls.host_email.errors?.required && form.controls.host_email.dirty">This field is required</li>
+                        <li *ngIf="(form.controls.host_email.errors?.minlength && form.controls.host_email.dirty || form.controls.host_email.errors?.maxlength && form.controls.host_email.dirty ) && form.controls.host_email.dirty">Minimum characters: 5, Maximum characters: 30</li>
+                        <li *ngIf="form.controls.host_email.errors?.validateEmail && form.controls.host_email.dirty">This must be a valid e-mail</li>
+                     </ul>
+                     </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                      <label for="host_password">Host Password</label>
+                      <div  [ngClass]="{'has-error': (form.controls.host_password.errors && form.controls.host_password.dirty), 'has-success': !form.controls.host_password.errors}">
+                         <input class="form-control" name="host_password" formControlName="host_password" id="host_password" type="password" placeholder="Enter host password">
+                        <ul class="help-block" style="color:red">
+                            <li *ngIf="form.controls.host_password.errors?.required && form.controls.host_password.dirty">This field is required</li>
+                            <li *ngIf="form.controls.host_password.errors?.minlength && form.controls.host_password.dirty || form.controls.host_password.errors?.maxlength && form.controls.host_password.dirty ">Minimum characters: 8, Maximum characters: 35</li>
+                         </ul>
+                      </div>
+                    </div>
+                      <div class="col-md-6">
+                       <label for="host_confirm">Confirm Password</label>
+                       <div [ngClass]="{'has-error': (form.controls.host_confirm.errors && form.controls.host_confirm.dirty) || (form.errors?.matchingPasswords && form.controls.host_confirm.dirty), 'has-success': !form.controls.host_confirm.errors && !form.errors?.matchingPasswords}">
+                        <input class="form-control" name="host_confirm" formControlName="host_confirm" id="host_confirm" type="password" placeholder="Confirm host password">
+                         <ul class="help-block" style="color:red">
+                          <li *ngIf="form.controls.host_confirm.errors?.required && form.controls.host_confirm.dirty">This field is required</li>
+                          <li *ngIf="form.errors?.matchingPasswords && form.controls.host_confirm.dirty">Password do not match</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  </div>      
+
+      </div>
+      <!-- /.box-body -->
+
+      <div class="box-footer">
+          <button  [disabled]="!form.valid || processing" type="submit" class="btn btn-primary btn-block" value="submit">Register</button>
+          
+      </div>
+    </form>
   </div>
+  <!-- /.box -->

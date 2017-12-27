@@ -40,6 +40,8 @@ import { TeamRegistrationComponent } from './components/team-registration/team-r
 import { SubmitArtifactComponent } from './components/submit-artifact/submit-artifact.component';
 import { FileUploadModule  } from 'ng2-file-upload';
 import { AppheaderComponent } from './components/appheader/appheader.component';
+import { EvalEventwiseRegisteredTeamsComponent } from './components/eval-eventwise-registered-teams/eval-eventwise-registered-teams.component';
+import { EvalTeamwiseSubmissionsComponent } from './components/eval-teamwise-submissions/eval-teamwise-submissions.component';
 
 
 @NgModule({
@@ -67,7 +69,9 @@ import { AppheaderComponent } from './components/appheader/appheader.component';
     ConfigureEventComponent,
     TeamRegistrationComponent,
     SubmitArtifactComponent,
-    AppheaderComponent
+    AppheaderComponent,
+    EvalEventwiseRegisteredTeamsComponent,
+    EvalTeamwiseSubmissionsComponent
   ],
   imports: [
     BrowserModule,

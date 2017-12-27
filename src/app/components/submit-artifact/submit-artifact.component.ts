@@ -33,6 +33,7 @@ export class SubmitArtifactComponent implements OnInit {
     });
     this.uploader.onBuildItemForm = (fileItem: any, form: any) => {
       form.append('_id' , this._id);
+      form.append('username', JSON.parse(localStorage.getItem('user')).username);
      };
   }
 
