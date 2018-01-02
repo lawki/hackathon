@@ -1,4 +1,4 @@
-  <h2 class="page-header">Registered Events</h2>
+  <h2 class="page-header">Registered Teams Events</h2>
   <table  class="table table-bordered table-hover table-sm table-responsive"  >
       <thead>
           <tr>
@@ -14,32 +14,13 @@
               <td  >{{ team.username }}</td>
               <td  >{{ team.team_name }}</td>
               <td> {{ team.event_title}}</td>
+              <td><a class="btn btn-xs btn-primary" [routerLink]="['/user-teamwise-submissions',team.event_title,team._id]">View Submissions</a></td>
               <td><a class="btn btn-xs btn-primary" [routerLink]="['/submit-artifact',team._id]">Submit Artifacts</a></td>
               
             
           </tr>
       </tbody>
     </table>
-
-    <h2 class="page-header">Uploaded Files</h2>
-    <table  class="table table-bordered table-hover table-sm table-responsive"  >
-        <thead>
-            <tr>
-                <th >Team Name</th>
-                <th >File Name</th>
-                <th >Event Title</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor='let file of files'>
-                <td>{{file.team_name}}</td>
-                <td><a href="http://localhost:8080/{{file.file_name}}" target="_blank">{{file.file_name}}</a></td>
-                <td>{{file.event_title}}</td>
-                
-              
-            </tr>
-        </tbody>
-      </table>
 
       <div class="box box-info" >
             <div class="box-header with-border">

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FileUploader } from 'ng2-file-upload';
 import { ActivatedRoute, Params,Router } from "@angular/router";
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-eval-teamwise-submissions',
-  templateUrl: './eval-teamwise-submissions.component.html',
-  styleUrls: ['./eval-teamwise-submissions.component.css']
+  selector: 'app-user-eventwise-submissions',
+  templateUrl: './user-eventwise-submissions.component.html',
+  styleUrls: ['./user-eventwise-submissions.component.css']
 })
-export class EvalTeamwiseSubmissionsComponent implements OnInit {
+export class UserEventwiseSubmissionsComponent implements OnInit {
 
   _id: any;
   event_title:any;
@@ -26,10 +25,9 @@ export class EvalTeamwiseSubmissionsComponent implements OnInit {
       this._id = params['_id'];
       this.event_title=params['event_title'];
     });
-    this.authService.getEvalTeamwiseSubmissions(this._id).subscribe(files=>
+    this.authService.getUserTeamwiseSubmissions(this._id).subscribe(files=>
       {
         this.files=files;
       });
   }
-
 }

@@ -42,6 +42,9 @@ import { FileUploadModule  } from 'ng2-file-upload';
 import { AppheaderComponent } from './components/appheader/appheader.component';
 import { EvalEventwiseRegisteredTeamsComponent } from './components/eval-eventwise-registered-teams/eval-eventwise-registered-teams.component';
 import { EvalTeamwiseSubmissionsComponent } from './components/eval-teamwise-submissions/eval-teamwise-submissions.component';
+import { AppmainComponent } from './components/appmain/appmain.component';
+import { UserEventwiseSubmissionsComponent } from './components/user-eventwise-submissions/user-eventwise-submissions.component';
+import { EvalSubmitEvaluationFormComponent } from './components/eval-submit-evaluation-form/eval-submit-evaluation-form.component';
 
 
 @NgModule({
@@ -71,7 +74,10 @@ import { EvalTeamwiseSubmissionsComponent } from './components/eval-teamwise-sub
     SubmitArtifactComponent,
     AppheaderComponent,
     EvalEventwiseRegisteredTeamsComponent,
-    EvalTeamwiseSubmissionsComponent
+    EvalTeamwiseSubmissionsComponent,
+    AppmainComponent,
+    UserEventwiseSubmissionsComponent,
+    EvalSubmitEvaluationFormComponent
   ],
   imports: [
     BrowserModule,

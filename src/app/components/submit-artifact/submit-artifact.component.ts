@@ -35,6 +35,10 @@ export class SubmitArtifactComponent implements OnInit {
       form.append('_id' , this._id);
       form.append('username', JSON.parse(localStorage.getItem('user')).username);
      };
+     this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+      console.log("ImageUpload:uploaded:", item, status);
+      this.router.navigate(['/profile']);
+  };
   }
 
 }

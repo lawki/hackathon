@@ -7,8 +7,7 @@ import { ViewEncapsulation } from '@angular/core'
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css','./navbar2.component.css' ],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
 
@@ -21,7 +20,7 @@ export class NavbarComponent implements OnInit {
   // Function to logout user
   onLogoutClick() {
     this.authService.logout(); // Logout user
-    this.router.navigate(['/']); // Navigate back to home page
+    this.router.navigate(['/login']); // Navigate back to home page
   }
   
   onAdminLogoutClick() {

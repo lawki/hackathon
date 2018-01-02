@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 export class EvalEventwiseRegisteredTeamsComponent implements OnInit {
   _id: any;
   teams: any[]= new Array;
+  evaluator_username : String ="";
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -18,6 +19,7 @@ export class EvalEventwiseRegisteredTeamsComponent implements OnInit {
     ) {}
 
   ngOnInit() {
+    this.evaluator_username=JSON.parse(localStorage.getItem('evaluator')).evaluator_username;
     this.route.params.forEach((params: Params) => {
       this._id = params['_id'];
     });

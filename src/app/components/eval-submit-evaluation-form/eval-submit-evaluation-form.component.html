@@ -1,0 +1,54 @@
+<div class="card card-register mx-auto mt-5">
+      
+        <div class="card-header">Evaluation Form</div>
+    
+        <div class="card-body">
+            <form [formGroup]="form" (submit)="onEvaluationFormSubmit()">
+    
+                
+                <div class="form-group">
+                    <label for="exampleInputUsername">Criteria 1</label>
+                    <div>
+                        <input class="form-control" [(ngModel)]="data.criteria1" name="criteria1" formControlName="criteria1" id="criteria1" type="number" placeholder="Enter rating on a scale of 1 to 10">
+                        <ul class="help-block" style="color:red">
+                            <li *ngIf="form.controls.criteria1.errors?.required && form.controls.criteria1.dirty">This field is required</li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="exampleInputUsername">Criteria 2</label>
+                    <div>
+                        <input class="form-control" [(ngModel)]="data.criteria2" name="criteria2" formControlName="criteria2" id="event_description" type="number" placeholder="Enter rating on a scale of 1 to 10">
+                        <ul class="help-block" style="color:red">
+                            <li *ngIf="form.controls.criteria2.errors?.required && form.controls.criteria2.dirty">This field is required</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputUsername">Criteria 3</label>
+                    <div>
+                        <input class="form-control" [(ngModel)]="data.criteria3" name="criteria3" formControlName="criteria3" id="criteria3" type="number" placeholder="Enter rating on a scale of 1 to 10">
+                        <ul class="help-block" style="color:red">
+                            <li *ngIf="form.controls.criteria3.errors?.required && form.controls.criteria3.dirty">This field is required</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputUsername">Comments</label>
+                    <div>
+                        <input class="form-control" [(ngModel)]="data.comments" name="comments" formControlName="comments" id="comments" type="textarea" placeholder="Enter comments">
+                        <ul class="help-block" style="color:red">
+                            <li *ngIf="form.controls.comments.errors?.required && form.controls.comments.dirty">This field is required</li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <div class="text-center">
+                    <button [disabled]="!form.valid || processing" type="submit" class="btn btn-primary btn-block" value="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -31,6 +31,8 @@ import { TeamRegistrationComponent } from './components/team-registration/team-r
 import { SubmitArtifactComponent } from './components/submit-artifact/submit-artifact.component';
 import { EvalEventwiseRegisteredTeamsComponent } from './components/eval-eventwise-registered-teams/eval-eventwise-registered-teams.component';
 import { EvalTeamwiseSubmissionsComponent } from './components/eval-teamwise-submissions/eval-teamwise-submissions.component';
+import { UserEventwiseSubmissionsComponent } from './components/user-eventwise-submissions/user-eventwise-submissions.component';
+import { EvalSubmitEvaluationFormComponent } from './components/eval-submit-evaluation-form/eval-submit-evaluation-form.component';
 
 
 const appRoutes: Routes = [
@@ -43,8 +45,16 @@ const appRoutes: Routes = [
     component: TeamRegistrationComponent // Default Route
   },
   {
-    path: 'eval-teamwise-submissions/:_id',
+    path: 'eval-submit-evaluation-form/:evaluator_username/:_id',
+    component: EvalSubmitEvaluationFormComponent // Default Route
+  },
+  {
+    path: 'eval-teamwise-submissions/:event_title/:_id',
     component: EvalTeamwiseSubmissionsComponent // Default Route
+  },
+  {
+    path: 'user-teamwise-submissions/:event_title/:_id',
+    component: UserEventwiseSubmissionsComponent // Default Route
   },
   {
     path: 'eval-eventwise-registered-teams/:_id',

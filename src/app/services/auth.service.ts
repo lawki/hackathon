@@ -50,6 +50,30 @@ export class AuthService {
   adminLoggedIn() {
     return tokenNotExpired('token2');
   }
+  getAdminName(){
+    if(JSON.parse(localStorage.getItem('admin')))
+      return JSON.parse(localStorage.getItem('admin')).admin_username;
+    else
+      return false;
+  }
+  getUserName(){
+    if(JSON.parse(localStorage.getItem('user')))
+      return JSON.parse(localStorage.getItem('user')).username;
+    else
+      return false;
+  }
+  getHostName(){
+    if(JSON.parse(localStorage.getItem('host')))
+      return JSON.parse(localStorage.getItem('host')).host_username;
+    else
+      return false;
+  }
+  getEvaluatorName(){
+    if(JSON.parse(localStorage.getItem('evaluator')))
+      return JSON.parse(localStorage.getItem('evaluator')).evaluator_username;
+    else
+      return false;
+  }
   admin_login(admin) {
     return this.http.post(this.domain + 'authentication/admin_login', admin).map(res => res.json());
   }
@@ -111,13 +135,16 @@ export class AuthService {
     return this.http.get(this.domain + 'authentication/eval_eventwise_team_details/' + event_id).map(res => res.json());
    }
    getEvalTeamwiseSubmissions(team_id:any) {
-    return this.http.get(this.domain + 'authentication/eval_teamwise_files/' + team_id).map(res => res.json());
+    return this.http.get(this.domain + 'authentication/teamwise_files/' + team_id).map(res => res.json());
    }
-   getFiles(username:any) {
-    return this.http.get(this.domain + 'authentication/files/' + username).map(res => res.json());
+   getUserTeamwiseSubmissions(team_id:any) {
+    return this.http.get(this.domain + 'authentication/teamwise_files/' + team_id).map(res => res.json());
    }
    getEvent(_id:any) {
     return this.http.get(this.domain + 'authentication/events/'+ _id).map(res => res.json());
+   }
+   getEvaluationData(_id:any) {
+    return this.http.get(this.domain + 'authentication/evaluation_data/'+ _id).map(res => res.json());
    }
    updateEvent(updatedEvent:any) {
     var body={
@@ -136,6 +163,18 @@ export class AuthService {
     };
     console.log(body);
     return this.http.put(this.domain + 'authentication/update-event/'+ body._id,body);
+   }
+
+   updateEvaluationData(updatedEvaluationData:any) {
+    var body={
+      team_id: updatedEvaluationData.team_id,
+      evaluator_username: updatedEvaluationData.evaluator_username,
+      criteria1: updatedEvaluationData.criteria1,
+      criteria2: updatedEvaluationData.criteria2,
+      criteria3: updatedEvaluationData.criteria3,
+      comments: updatedEvaluationData.comments,
+    };
+    return this.http.put(this.domain + 'authentication/update_evaluation_data/'+ body.team_id,body);
    }
    getHostEvents(host_username: any) {
     return this.http.get(this.domain + 'authentication/get_host_events/'+ host_username).map(res => res.json());
