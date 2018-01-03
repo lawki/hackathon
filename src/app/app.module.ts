@@ -46,7 +46,8 @@ import { AppmainComponent } from './components/appmain/appmain.component';
 import { UserEventwiseSubmissionsComponent } from './components/user-eventwise-submissions/user-eventwise-submissions.component';
 import { EvalSubmitEvaluationFormComponent } from './components/eval-submit-evaluation-form/eval-submit-evaluation-form.component';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
-
+import { DemoComponent } from './components/demo/demo.component';
+import { GetTokenService } from './services/get-token.service';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
     EvalTeamwiseSubmissionsComponent,
     AppmainComponent,
     UserEventwiseSubmissionsComponent,
-    EvalSubmitEvaluationFormComponent
+    EvalSubmitEvaluationFormComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +93,7 @@ import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
     AngularDateTimePickerModule,
     FileUploadModule
   ],
-  providers: [AuthService,AuthGuard, NotAuthGuard,AdminAuthGuard,AdminNotAuthGuard,EvaluatorAuthGuard,EvaluatorNotAuthGuard,HostAuthGuard,HostNotAuthGuard],
+  providers: [AuthService,GetTokenService,AuthGuard, NotAuthGuard,AdminAuthGuard,AdminNotAuthGuard,EvaluatorAuthGuard,EvaluatorNotAuthGuard,HostAuthGuard,HostNotAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -33,7 +33,7 @@ import { EvalEventwiseRegisteredTeamsComponent } from './components/eval-eventwi
 import { EvalTeamwiseSubmissionsComponent } from './components/eval-teamwise-submissions/eval-teamwise-submissions.component';
 import { UserEventwiseSubmissionsComponent } from './components/user-eventwise-submissions/user-eventwise-submissions.component';
 import { EvalSubmitEvaluationFormComponent } from './components/eval-submit-evaluation-form/eval-submit-evaluation-form.component';
-
+import { DemoComponent } from './components/demo/demo.component';
 
 const appRoutes: Routes = [
   {
@@ -43,6 +43,10 @@ const appRoutes: Routes = [
   {
     path: 'team-registration/:_id',
     component: TeamRegistrationComponent // Default Route
+  },
+  {
+    path: 'demo',
+    component: DemoComponent // Default Route
   },
   {
     path: 'eval-submit-evaluation-form/:evaluator_username/:_id',

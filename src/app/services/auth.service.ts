@@ -62,6 +62,7 @@ export class AuthService {
     else
       return false;
   }
+  
   getHostName(){
     if(JSON.parse(localStorage.getItem('host')))
       return JSON.parse(localStorage.getItem('host')).host_username;
@@ -214,7 +215,7 @@ export class AuthService {
   }
   // Function to check if user is logged in
   loggedIn() {
-    return tokenNotExpired();
+    return tokenNotExpired()  || tokenNotExpired('myToken');
   }
   // Function to store user's data in client local storage
   storeUserData(token, user) {
@@ -223,7 +224,13 @@ export class AuthService {
     this.authToken = token; // Assign token to be used elsewhere
     this.user = user; // Set user to be used elsewhere
   }
-  // Function to logout
+
+  storeLinkedInData(myToken,message,user){
+    localStorage.setItem('myToken', myToken); 
+    localStorage.setItem('message', message); 
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+  
   logout() {
     this.authToken = null; // Set token to null
     this.user = null; // Set user to null
