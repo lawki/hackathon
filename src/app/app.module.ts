@@ -45,6 +45,7 @@ import { EvalTeamwiseSubmissionsComponent } from './components/eval-teamwise-sub
 import { AppmainComponent } from './components/appmain/appmain.component';
 import { UserEventwiseSubmissionsComponent } from './components/user-eventwise-submissions/user-eventwise-submissions.component';
 import { EvalSubmitEvaluationFormComponent } from './components/eval-submit-evaluation-form/eval-submit-evaluation-form.component';
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { EvalSubmitEvaluationFormComponent } from './components/eval-submit-eval
   ],
   imports: [
     BrowserModule,
+    MultiselectDropdownModule,
     HttpModule,
 	  FormsModule,
     AppRoutingModule,

@@ -1,1 +1,102 @@
-<h2>Home Route</h2>
+<div class="content-wrapper">
+        <div class="bg-navy-active color-palette">
+            <div class="container">
+                <h1 style="text-align:center">FEATURED HACKATHONS</h1>
+                <div *ngFor='let event of events'>
+                    <div *ngIf="event.future == 'true'">
+                        <div class="bg-light-blue-active color-palette">
+    
+                            <div class="row">
+    
+                                <div class="col-lg-2  col-xs-6">
+                                    <div>
+                                        <i style=" line-height:60px;margin-left:20%" class="fa fa-clock-o"></i> {{event.time}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-xs-6">
+                                    <div>
+                                        <h1 style=" line-height:50% ; margin-left:30%"><i class="fa fa-laptop" ></i></h1>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7  col-xs-12">
+                                    <div>
+                                        <h3 style=" line-height:50% ;"><a [routerLink]="['/event-page',event._id]" style="color:whitesmoke">{{ event.event_title }}</a></h3>
+                                        <p>{{ event.event_description }}</p>
+                                    </div>
+    
+                                </div>
+                                <div class="col-lg-2  col-xs-12">
+                                    <div>
+                                        <h4 style=" line-height:50px"><i class="fa fa-map-marker"></i> {{ event.location }}</h4>
+                                    </div>
+    
+                                </div>
+    
+                            </div>
+                        </div>
+    
+                        <br>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+        <div  class="container">
+            <section class="content">
+                <div class="row">
+                    <div class="col-lg-4">
+                                    <div class="box-body">
+                                      <input class="form-control" type="text" placeholder="Search Hackathons">
+                                      <h3 style="text-align:center;margin:5px auto" >near</h3>
+                                      <input class="form-control" type="text" placeholder="Location">
+                                    </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                                <div *ngFor='let event of events'>
+                                        <div >
+                                            <div class="bg-gray color-palette">
+                        
+                                                <div class="row">
+                        
+                                                    <div class="col-lg-2  col-xs-6">
+                                                        <div>
+                                                            <i style=" line-height:60px;margin-left:20%" class="fa fa-clock-o"></i> {{event.time}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-1 col-xs-6">
+                                                        <div>
+                                                            <h1 style=" line-height:50% ; margin-left:30%"><i class="fa fa-laptop" ></i></h1>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-7  col-xs-12">
+                                                        <div>
+                                                            <h3 style=" line-height:50% ;"><a [routerLink]="['/event-page',event._id]" style="color:black">{{ event.event_title }}</a></h3>
+                                                            <p>{{ event.event_description }}</p>
+                                                        </div>
+                        
+                                                    </div>
+                                                    <div class="col-lg-2  col-xs-12">
+                                                        <div>
+                                                            <h4 style=" line-height:50px"><i class="fa fa-map-marker"></i> {{ event.location }}</h4>
+                                                        </div>
+                        
+                                                    </div>
+                        
+                                                </div>
+                                            </div>
+                        
+                                            <br>
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                
+            </section>
+
+        </div>
+    
+    </div>

@@ -1,12 +1,170 @@
-<h2 class="page-header">Event Page</h2>
-<ul class="list-group">
-  <li class="list-group-item">event title: {{ event.event_title }}</li>
-  <li class="list-group-item">event host: {{ event.host_username }}</li>
-  <li class="list-group-item">event host: {{ event.event_description }}</li>
-  <li class="list-group-item">Start Date: {{ event.start | date:'dd-MM-yyyy' }}</li>
-  <li class="list-group-item">Start Time: {{ event.start | date:'HH:mm:ss'  }}</li>
-  <li class="list-group-item">End Date: {{ event.end | date:'dd-MM-yyyy' }}</li>
-  <li class="list-group-item">End Time: {{ event.end | date:'HH:mm:ss'  }}</li>
-  <li class="list-group-item">Location : {{ event.location }}</li>
-</ul>
+<div class="content-wrapper">
+    <div class="bg-navy-active color-palette">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-1">
+                <p  style="font-size:500%"><i class="fa fa-laptop" aria-hidden="true"></i></p>
+            </div>
+            <div class="col-lg-11" style="line-height:80%">
+                <h1> {{ event.event_title }}</h1>
+                <p> {{ event.event_description }}</p>
+                <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{ event.display_time }}</p>
+                <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ event.location }}</p>
+            </div>
 
+          </div>
+           
+        </div>
+    </div>
+    <div  class="container">
+        <section class="content">
+
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#tab_1" data-toggle="tab">OVERVIEW</a></li>
+                  <li><a href="#tab_2" data-toggle="tab">SCHEDULE</a></li>
+                  <li><a href="#tab_3" data-toggle="tab">RULES</a></li>
+                  <li><a href="#tab_3" data-toggle="tab">PRIZES</a></li>
+                  <li><a href="#tab_3" data-toggle="tab">JUDGING</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tab_1">
+                   <div class="row">
+                     <div class="col-lg-3">
+                        <button [routerLink]="['/team-registration',event._id]" class="btn btn-xs btn-primary" type="button" class="btn btn-block btn-primary btn-lg">JOIN EVENT</button>
+                                                
+                        <br>
+                            <div class="box-header with-border">
+                              <h3 class="box-title">Organizers</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body no-padding">
+                              <ul class="users-list clearfix">
+                                <li>
+                                  <img src="assets/dist/img/user1-128x128.jpg" alt="User Image">
+                                  <a class="users-list-name" href="#">{{ event.host_username }}</a>
+                                </li>
+                              </ul>
+                            <!-- /.box-footer -->
+                          </div>
+
+                          <br>
+                          <div class="box box-primary">
+                          <div class="box-header with-border">
+                            <h3 class="box-title">Evaluators</h3>
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body no-padding">
+                            <ul class="users-list clearfix">
+                              <li *ngFor="let evaluator of evaluators">
+                                <img src="assets/dist/img/user1-128x128.jpg" alt="User Image">
+                                <a class="users-list-name" href="#">{{ evaluator }}</a>
+                              </li>
+                            </ul>
+                          <!-- /.box-footer -->
+                        </div>
+                        </div>
+
+                     </div>
+                     <div class="col-lg-9">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                              <h3 class="box-title">About this Event</h3>
+                            </div>
+                            <div class="box-body">
+                                <p>Join people from around the world to develop innovative solutions to improve access to justice! The hackathon is not just for techies--we need people who understand the needs of low-income clients, legal professionals with deep knowledge of the issues, and project managers that can keep everything on track.
+                                </p>
+                                <br>
+                               <p> All technologies are welcome (not just Drupal). If you can’t participate in person, you can still participate remotely.
+                                </p>
+                                <br>
+                               <p> The Legal Aid Hackathon is funded by the generosity of the Legal Services Corporation by a TIG Grant to Bay Area Legal Services.
+                              </p>
+                              </div>
+                            <!-- /.box-body -->
+                          </div>
+
+                          <div class="box box-primary">
+                              <div class="box-header">
+                                <h3 class="box-title">Prizes</h3>
+                              </div>
+                              <div class="box-body">
+                                <div class="row"  style="text-align:center">
+                                  <div class="col-lg-4">
+                                      <i style="font-size:500%" class="fa fa-trophy" aria-hidden="true"></i>
+                                      <p>1'st</p>
+                                      <h3>Cash Prizes for team</h3>
+                                    </div>
+                                  <div class="col-lg-4">
+                                      <i style="font-size:500%" class="fa fa-trophy" aria-hidden="true"></i>
+                                      <p>2'nd</p>
+                                      <h3>Fitbits</h3>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <i style="font-size:500%" class="fa fa-trophy" aria-hidden="true"></i>
+                                        <p>3'rd</p>
+                                        <h3>Xbox</h3>
+                                      </div>
+                                </div>
+                                </div>
+                              <!-- /.box-body -->
+                            </div>
+
+                            <div class="box">
+                                <div class="box-header">
+                                  <h3 class="box-title">Schedule</h3>
+                                </div>
+                                <div class="box-body">
+                                    8:00am - Introductions and Overview
+                                    
+                                    9:00am - Start Development
+                                    
+                                    11:00am - Informal break to connect with other teams
+                                    
+                                    12:15pm - Lunch break (lunch provided)
+                                    
+                                    2:30pm - Informal break to connect with other teams
+                                    
+                                    4:30pm - Team Presentations
+                                    
+                                    5:30pm - End of hackathon
+                                    
+                                    Coffee and snacks will be provided throughout the day
+                                  </div>
+                                <!-- /.box-body -->
+                              </div>
+
+                     </div>
+                   </div>
+                  </div>
+                  <!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab_2">
+                    The European languages are members of the same family. Their separate existence is a myth.
+                    For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
+                    in their grammar, their pronunciation and their most common words. Everyone realizes why a
+                    new common language would be desirable: one could refuse to pay expensive translators. To
+                    achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+                    words. If several languages coalesce, the grammar of the resulting language is more simple
+                    and regular than that of the individual languages.
+                  </div>
+                  <!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab_3">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                    like Aldus PageMaker including versions of Lorem Ipsum.
+                  </div>
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div>
+
+            
+        </section>
+
+    </div>
+
+</div>

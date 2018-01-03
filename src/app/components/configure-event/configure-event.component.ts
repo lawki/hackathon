@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Params,Router } from "@angular/router";
 
@@ -10,6 +11,8 @@ import { ActivatedRoute, Params,Router } from "@angular/router";
   styleUrls: ['./configure-event.component.css']
 })
 export class ConfigureEventComponent implements OnInit {
+
+
   _id: any;
   event: any={};
   evaluators: any[]= new Array;
@@ -58,11 +61,22 @@ export class ConfigureEventComponent implements OnInit {
       max_ideas:[''],
       prize:[''],
       publish:[''],
-      evaluator_username:['']
+      hello:[''],
+      evaluators_array: this.formBuilder.array([])
 		});
 		
   }
 
+  onChange(evaluator_username:string, isChecked: boolean) {
+    const evaluatorsFormArray = <FormArray>this.form.controls.evaluators_array;
+
+    if(isChecked) {
+      evaluatorsFormArray.push(new FormControl(evaluator_username));
+    } else {
+      let index = evaluatorsFormArray.controls.findIndex(x => x.value == evaluator_username)
+      evaluatorsFormArray.removeAt(index);
+    }
+}
 
   onConfigureRegisterSubmit(){
     const updated_event = {
@@ -77,14 +91,17 @@ export class ConfigureEventComponent implements OnInit {
       max_ideas: this.form.get('max_ideas').value,
       prize: this.form.get('prize').value,
       publish: this.form.get('publish').value,
-      evaluator_username: this.form.get('evaluator_username').value,
+      hello: this.form.get('hello').value,
+      evaluators_array:this.form.get('evaluators_array').value,
     }
     console.log(updated_event);
     this.authService.updateEvent(updated_event)
     .subscribe((events:any)=>this.router.navigate(['/view-host-events']),err=>console.log(err));
   }
 
+  
   ngOnInit() {
+    
     this.route.params.forEach((params: Params) => {
       this._id = params['_id'];
   });
@@ -100,7 +117,8 @@ export class ConfigureEventComponent implements OnInit {
         {
           this.evaluators=evaluators;
         });
-  }
+        
+ }
 
 
 }
