@@ -11,7 +11,6 @@ import { AuthService } from '../../services/auth.service';
 })
 export class DemoComponent implements OnInit {
 
-  email:any ="";
   accessToken:any=null;
   accessResponse:any=null;
   params:any;
@@ -33,9 +32,10 @@ export class DemoComponent implements OnInit {
       else{
         this.tokenService.getToken(this.params.code).subscribe((success)=>
             {
-              this.email=success.json().user.email;
               this.authService.storeLinkedInData(success.json().myToken, success.json().message, success.json().user);
+              
               console.log(success.json());
+              this.router.navigate(['/profile']);
             },
             error=>{console.log("ERROR: "+error);return});
       }

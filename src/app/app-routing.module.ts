@@ -109,7 +109,7 @@ const appRoutes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent, // Login Route
-	  canActivate: [AuthGuard] // User must be logged in to view this route
+    canActivate: [AuthGuard]
   },
   
   {
