@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubmitArtifactComponent } from './submit-artifact.component';
+import { ContactsDetailComponent } from './contacts-detail.component';
 
-describe('SubmitArtifactComponent', () => {
-  let component: SubmitArtifactComponent;
-  let fixture: ComponentFixture<SubmitArtifactComponent>;
+describe('ContactsDetailComponent', () => {
+  let component: ContactsDetailComponent;
+  let fixture: ComponentFixture<ContactsDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SubmitArtifactComponent ]
+      declarations: [ ContactsDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SubmitArtifactComponent);
+    fixture = TestBed.createComponent(ContactsDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

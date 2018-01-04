@@ -12,7 +12,6 @@ import { AuthService } from '../../services/auth.service';
 export class ProfileComponent implements OnInit {
 
   events: any[]= new Array;
-  teams: any[]= new Array;
   accessToken:any=null;
   accessResponse:any=null;
   params:any;
@@ -30,7 +29,6 @@ export class ProfileComponent implements OnInit {
         this.authService.getEvents().subscribe(data => {
             this.events = data.events
         });
-        this.authService.getTeams(JSON.parse(localStorage.getItem('user')).username).subscribe(teams => this.teams = teams);
     }
     
     }

@@ -56,7 +56,7 @@ export class TeamRegistrationComponent implements OnInit {
 
     this.authService.getEvent(this._id).subscribe(event=>
       {
-        this.event=event;
+        this.event=event.event;
       });
   }
 

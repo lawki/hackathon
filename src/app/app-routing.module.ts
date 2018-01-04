@@ -28,17 +28,28 @@ import { ViewHostEventsComponent } from './components/view-host-events/view-host
 import { EventPageComponent } from './components/event-page/event-page.component';
 import { ConfigureEventComponent } from './components/configure-event/configure-event.component';
 import { TeamRegistrationComponent } from './components/team-registration/team-registration.component';
-import { SubmitArtifactComponent } from './components/submit-artifact/submit-artifact.component';
 import { EvalEventwiseRegisteredTeamsComponent } from './components/eval-eventwise-registered-teams/eval-eventwise-registered-teams.component';
-import { EvalTeamwiseSubmissionsComponent } from './components/eval-teamwise-submissions/eval-teamwise-submissions.component';
-import { UserEventwiseSubmissionsComponent } from './components/user-eventwise-submissions/user-eventwise-submissions.component';
-import { EvalSubmitEvaluationFormComponent } from './components/eval-submit-evaluation-form/eval-submit-evaluation-form.component';
+import { EvalTeamwiseSubmissionsComponent } from './components/eval-teamwise-submissions/eval-teamwise-submissions.component';import { EvalSubmitEvaluationFormComponent } from './components/eval-submit-evaluation-form/eval-submit-evaluation-form.component';
 import { DemoComponent } from './components/demo/demo.component';
+import { ContactsListComponent } from './contacts-list/contacts-list.component';
+import { ContactsDetailComponent } from './contacts-detail/contacts-detail.component';
+import { ContactResolve } from './contact.resolve';
+import { EventResolve } from './event.resolve';
 
 const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent // Default Route
+  },
+  { path: 'mypage', 
+    component: ContactsListComponent 
+  },
+  { 
+    path: 'contact/:id',
+    component: ContactsDetailComponent,
+    resolve: {
+      contact: ContactResolve
+    }
   },
   {
     path: 'team-registration/:_id',
@@ -57,20 +68,15 @@ const appRoutes: Routes = [
     component: EvalTeamwiseSubmissionsComponent // Default Route
   },
   {
-    path: 'user-teamwise-submissions/:event_title/:_id',
-    component: UserEventwiseSubmissionsComponent // Default Route
-  },
-  {
     path: 'eval-eventwise-registered-teams/:_id',
     component: EvalEventwiseRegisteredTeamsComponent // Default Route
   },
   {
-    path: 'submit-artifact/:_id',
-    component: SubmitArtifactComponent // Default Route
-  },
-  {
     path: 'event-page/:_id',
     component: EventPageComponent, // Dashboard Route,
+    resolve: {
+      event: EventResolve
+    }
   },
   {
     path: 'configure-event/:_id',

@@ -2,20 +2,19 @@
         <div class="container">
             <section class="content-header">
                 <h1>
-                                          Top Navigation
-                                          <small>Example 2.0</small>
+                                          Configure Event
                                         </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li><a href="#">Layout</a></li>
-                    <li class="active">Top Navigation</li>
+                    <li><a href="#">Configure Event</a></li>
+                    <li class="active">{{event.event_title}}</li>
                 </ol>
             </section>
     
             <section class="content">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Configure Event</h3>
+                        <h3 class="box-title">{{event.event_title}}</h3>
                     </div>
     
                     <div *ngIf="message" [ngClass]="messageClass">
@@ -43,77 +42,83 @@
                         </div>
     
                         <form [formGroup]="form" (submit)="onConfigureRegisterSubmit()">
-    
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputUsername">Event Title</label>
+                                <div class="form-group">
+                                        <label for="max_ideas">Event Title</label>
                                         <div>
-                                            <input class="form-control" [(ngModel)]="event.event_title" name="event_title" formControlName="event_title" id="event_title" type="text" placeholder="Enter Event Title">
+                                            <input class="form-control" [(ngModel)]="event.event_title" name="event_title" formControlName="event_title" id="event_title" type="text" placeholder="Enter event title">
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                        <label for="exampleInputUsername">Event Description</label>
+                                        <div>
+                                            <textarea class="form-control" [(ngModel)]="event.event_description" name="event_description" formControlName="event_description" id="event_description" rows="2" placeholder="Enter Event Description"></textarea>
+            
                                             <ul class="help-block" style="color:red">
-                                                <li *ngIf="form.controls.event_title.errors?.required && form.controls.event_title.dirty">This field is required</li>
+                                                <li *ngIf="form.controls.event_description.errors?.required && form.controls.event_description.dirty">This field is required</li>
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputUsername">Host Name</label>
-                                        <div>
-                                            <input class="form-control" disabled [(ngModel)]="event.host_username" formControlName="host_username" name="host_username" type="text" ngModel="noption">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
+    
+                            <div class="row">
+                                <div class="col-lg-4 col-xs-12">
                                     <div class="form-group">
                                         <label for="location">Location</label>
                                         <div>
                                             <input class="form-control" [(ngModel)]="event.location" name="location" formControlName="location" id="location" type="text" placeholder="Enter Location"> </div>
                                     </div>
                                 </div>
-                            </div>
-    
-                            <div class="form-group">
-                                <label for="exampleInputUsername">Event Description</label>
-                                <div>
-                                    <textarea class="form-control" [(ngModel)]="event.event_description" name="event_description" formControlName="event_description" id="event_description" rows="2" placeholder="Enter Event Description"></textarea>
-    
-                                    <ul class="help-block" style="color:red">
-                                        <li *ngIf="form.controls.event_description.errors?.required && form.controls.event_description.dirty">This field is required</li>
-                                    </ul>
-                                </div>
-                            </div>
-    
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                        <label for="max_team_members">Max Team Members</label>
-                                        <div>
-                                            <input class="form-control" [(ngModel)]="event.max_team_members" name="max_team_members" formControlName="max_team_members" id="max_team_members" type="number" placeholder="Enter number of maximum team members">
-    
+                                <div class="col-lg-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="max_team_members">Max Team Members</label>
+                                            <div>
+                                                <input class="form-control" [(ngModel)]="event.max_team_members" name="max_team_members" formControlName="max_team_members" id="max_team_members" type="number" placeholder="Enter number of maximum team members">
+        
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                        <label for="max_ideas">Max number of ideas</label>
-                                        <div>
-                                            <input class="form-control" [(ngModel)]="event.max_ideas" name="max_ideas" formControlName="max_ideas" id="max_ideas" type="number" placeholder="Enter number of maximum ideas that can be supported">
+                                    <div class="col-lg-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label for="max_ideas">Max number of ideas</label>
+                                                <div>
+                                                    <input class="form-control" [(ngModel)]="event.max_ideas" name="max_ideas" formControlName="max_ideas" id="max_ideas" type="number" placeholder="Enter number of maximum ideas that can be supported">
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                        <label for="prize">Prize</label>
-                                        <div>
-                                            <input class="form-control" [(ngModel)]="event.prize" name="prize" formControlName="prize" id="prize" type="number" placeholder="Enter prize money">
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
     
                             <div class="row">
-                                <div class="col-xs-6">
+                                <div class="col-lg-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="prize1">First Prize</label>
+                                        <div>
+                                            <input class="form-control" [(ngModel)]="event.prize1" name="prize1" formControlName="prize1" id="prize1" type="text" placeholder="Enter first prize">
+    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="prize1">Second Prize</label>
+                                        <div>
+                                            <input class="form-control" [(ngModel)]="event.prize2" name="prize2" formControlName="prize2" id="prize2" type="text" placeholder="Enter second prize">
+    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="prize3">Third Prize</label>
+                                        <div>
+                                            <input class="form-control" [(ngModel)]="event.prize3" name="prize3" formControlName="prize3" id="prize3" type="text" placeholder="Enter third prize">
+    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+    
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-12">
                                         <div class="form-group">
                                                 <label for="location">Evaluators</label>
                                                 <div *ngFor="let evaluator of evaluators">
@@ -122,7 +127,7 @@
                                             </div>
 
                                 </div>
-                                <div class="col-xs-6">
+                                <div class="col-lg-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="exampleInputUsername">Publish</label>
                                         <div>

@@ -1,168 +1,408 @@
 <div class="content-wrapper">
     <div class="bg-navy-active color-palette">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-1">
-                <p  style="font-size:500%"><i class="fa fa-laptop" aria-hidden="true"></i></p>
-            </div>
-            <div class="col-lg-11" style="line-height:80%">
-                <h1> {{ event.event_title }}</h1>
-                <p> {{ event.event_description }}</p>
-                <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{ event.display_time }}</p>
-                <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ event.location }}</p>
+            <div class="row">
+                <div class="col-lg-1">
+                    <p style="font-size:500%"><i class="fa fa-laptop" aria-hidden="true"></i></p>
+                </div>
+                <div class="col-lg-11" style="line-height:100%">
+                    <h1> {{ event.event_title }}</h1>
+                    <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{ event.display_time }}</p>
+                    <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ event.location }}</p>
+                </div>
+
             </div>
 
-          </div>
-           
         </div>
     </div>
-    <div  class="container">
+    <div class="container">
         <section class="content">
 
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                  <li class="active"><a href="#tab_1" data-toggle="tab">OVERVIEW</a></li>
-                  <li><a href="#tab_2" data-toggle="tab">SCHEDULE</a></li>
-                  <li><a href="#tab_3" data-toggle="tab">RULES</a></li>
-                  <li><a href="#tab_3" data-toggle="tab">PRIZES</a></li>
-                  <li><a href="#tab_3" data-toggle="tab">JUDGING</a></li>
+                    <li class="active"><a href="#tab_1" data-toggle="tab">OVERVIEW</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">SCHEDULE</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">RULES</a></li>
+                    <li><a href="#tab_4" data-toggle="tab">PRIZES</a></li>
+                    <li><a href="#tab_5" data-toggle="tab">JUDGING</a></li>
+                    <li *ngIf="isRegistered"><a href="#tab_6" data-toggle="tab">TEAM</a></li>
+                    <li *ngIf="isRegistered"><a href="#tab_7" data-toggle="tab">SUBMIT ARTIFACTS</a></li>
+                    <li *ngIf="isRegistered"><a href="#tab_8" data-toggle="tab">SUBMISSIONS</a></li>
                 </ul>
                 <div class="tab-content">
-                  <div class="tab-pane active" id="tab_1">
-                   <div class="row">
-                     <div class="col-lg-3">
-                        <button [routerLink]="['/team-registration',event._id]" class="btn btn-xs btn-primary" type="button" class="btn btn-block btn-primary btn-lg">JOIN EVENT</button>
-                                                
-                        <br>
-                            <div class="box-header with-border">
-                              <h3 class="box-title">Organizers</h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body no-padding">
-                              <ul class="users-list clearfix">
-                                <li>
-                                  <img src="assets/dist/img/user1-128x128.jpg" alt="User Image">
-                                  <a class="users-list-name" href="#">{{ event.host_username }}</a>
-                                </li>
-                              </ul>
-                            <!-- /.box-footer -->
-                          </div>
+                    <div class="tab-pane active" id="tab_1">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <button *ngIf="!isRegistered" [disabled]="isRegistered" [routerLink]="['/team-registration',event._id]" class="btn btn-xs btn-primary" type="button" class="btn btn-block btn-primary btn-lg">JOIN EVENT</button>
+                                <button *ngIf="isRegistered" [disabled]="isRegistered" class="btn btn-xs btn-primary" type="button" class="btn btn-block btn-danger btn-lg">JOINED</button>
 
-                          <br>
-                          <div class="box box-primary">
-                          <div class="box-header with-border">
-                            <h3 class="box-title">Evaluators</h3>
-                          </div>
-                          <!-- /.box-header -->
-                          <div class="box-body no-padding">
+                                <br>
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Organizers</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <ul class="users-list clearfix">
+                                        <li>
+                                            <img src="https://api.adorable.io/avatars/128/{{event.host_username}}" alt="User Image">
+                                            <a class="users-list-name" href="#">{{ event.host_username }}</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.box-footer -->
+                                </div>
+
+                                <br>
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Evaluators</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body no-padding">
+                                        <ul class="users-list clearfix">
+                                            <li *ngFor="let evaluator of evaluators">
+                                                <img src="https://api.adorable.io/avatars/128/{{evaluator}}" alt="User Image">
+                                                <a class="users-list-name" href="#">{{ evaluator }}</a>
+                                            </li>
+                                        </ul>
+                                        <!-- /.box-footer -->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">About this Event</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        {{event.event_description}}
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Prizes</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="row" style="text-align:center">
+                                            <div *ngIf="event.prize1" class="col-lg-4 col-xs-6">
+                                                <i style="font-size:500%" class="fa fa-trophy" aria-hidden="true"></i>
+                                                <p>1'st</p>
+                                                <h3>{{event.prize1}}</h3>
+                                            </div>
+                                            <div *ngIf="event.prize2" class="col-lg-4 col-xs-6">
+                                                <i style="font-size:500%" class="fa fa-trophy" aria-hidden="true"></i>
+                                                <p>2'nd</p>
+                                                <h3>{{event.prize2}}</h3>
+                                            </div>
+                                            <div *ngIf="event.prize3" class="col-lg-4 col-xs-6">
+                                                <i style="font-size:500%" class="fa fa-trophy" aria-hidden="true"></i>
+                                                <p>3'rd</p>
+                                                <h3>{{event.prize3}}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+
+                                <div class="box">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Schedule</h3>
+                                    </div>
+                                    <div class="box-body">
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_2">
+                        The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_3">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </div>
+
+                    <div class="tab-pane" id="tab_4">
+                    </div>
+
+                    <div class="tab-pane" id="tab_5">
+                    </div>
+
+                    <div class="tab-pane" id="tab_6">
+                        <h2 class="page-header">Team Name - {{team.team_name}}</h2>
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Members</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
                             <ul class="users-list clearfix">
-                              <li *ngFor="let evaluator of evaluators">
-                                <img src="assets/dist/img/user1-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">{{ evaluator }}</a>
-                              </li>
+                                <li *ngIf="team.member1">
+                                    <img src="https://api.adorable.io/avatars/100/{{team?.member1 }}" alt="User Image">
+                                    <a class="users-list-name" href="#">{{ team.member1 }}</a>
+                                </li>
+                                <li *ngIf="team.member2">
+                                    <img src="https://api.adorable.io/avatars/100/{{team?.member2 }}" alt="User Image">
+                                    <a class="users-list-name" href="#">{{ team.member2 }}</a>
+                                </li>
+                                <li *ngIf="team.member3">
+                                    <img src="https://api.adorable.io/avatars/100/{{team.member3 }}" alt="User Image">
+                                    <a class="users-list-name" href="#">{{ team.member3 }}</a>
+                                </li>
                             </ul>
-                          <!-- /.box-footer -->
+                            <!-- /.box-footer -->
                         </div>
-                        </div>
+                    </div>
 
-                     </div>
-                     <div class="col-lg-9">
-                        <div class="box box-primary">
-                            <div class="box-header with-border">
-                              <h3 class="box-title">About this Event</h3>
-                            </div>
-                            <div class="box-body">
-                                <p>Join people from around the world to develop innovative solutions to improve access to justice! The hackathon is not just for techies--we need people who understand the needs of low-income clients, legal professionals with deep knowledge of the issues, and project managers that can keep everything on track.
-                                </p>
-                                <br>
-                               <p> All technologies are welcome (not just Drupal). If you can’t participate in person, you can still participate remotely.
-                                </p>
-                                <br>
-                               <p> The Legal Aid Hackathon is funded by the generosity of the Legal Services Corporation by a TIG Grant to Bay Area Legal Services.
-                              </p>
-                              </div>
-                            <!-- /.box-body -->
-                          </div>
+                    <div class="tab-pane" id="tab_7">
 
-                          <div class="box box-primary">
-                              <div class="box-header">
-                                <h3 class="box-title">Prizes</h3>
-                              </div>
-                              <div class="box-body">
-                                <div class="row"  style="text-align:center">
-                                  <div class="col-lg-4">
-                                      <i style="font-size:500%" class="fa fa-trophy" aria-hidden="true"></i>
-                                      <p>1'st</p>
-                                      <h3>Cash Prizes for team</h3>
+                        <style>
+                            .my-drop-zone {
+                                border: dotted 3px lightgray;
+                            }
+
+                            .nv-file-over {
+                                border: dotted 3px red;
+                            }
+
+                            /* Default class applied to drop zones on over */
+
+                            .another-file-over-class {
+                                border: dotted 3px green;
+                            }
+
+                            html,
+                            body {
+                                height: 100%;
+                            }
+                        </style>
+
+                        
+
+                            <div class="row">
+
+                                <div class="col-md-3">
+
+                                    <h3>Select files</h3>
+
+                                    <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader" class="well my-drop-zone">
+                                        Base drop zone
                                     </div>
-                                  <div class="col-lg-4">
-                                      <i style="font-size:500%" class="fa fa-trophy" aria-hidden="true"></i>
-                                      <p>2'nd</p>
-                                      <h3>Fitbits</h3>
+
+                                    <div ng2FileDrop [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}" (fileOver)="fileOverAnother($event)" [uploader]="uploader" class="well my-drop-zone">
+                                        Another drop zone
                                     </div>
-                                    <div class="col-lg-4">
-                                        <i style="font-size:500%" class="fa fa-trophy" aria-hidden="true"></i>
-                                        <p>3'rd</p>
-                                        <h3>Xbox</h3>
-                                      </div>
+
+                                    Multiple
+                                    <input type="file" ng2FileSelect [uploader]="uploader" multiple /><br/> Single
+                                    <input type="file" ng2FileSelect [uploader]="uploader" />
                                 </div>
+
+                                <div class="col-md-9" style="margin-bottom: 40px">
+
+                                    <h3>Upload queue</h3>
+                                    <p>Queue length: {{ uploader?.queue?.length }}</p>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th width="50%">Name</th>
+                                                <th>Size</th>
+                                                <th>Progress</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of uploader.queue">
+                                                <td><strong>{{ item?.file?.name }}</strong></td>
+                                                <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                                                <td *ngIf="uploader.isHTML5">
+                                                    <div class="progress" style="margin-bottom: 0;">
+                                                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                                    <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                                </td>
+                                                <td nowrap>
+                                                    <button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                                      <span class="glyphicon glyphicon-upload"></span> Upload
+                                                  </button>
+                                                    <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
+                                                      <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                                  </button>
+                                                    <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
+                                                      <span class="glyphicon glyphicon-trash"></span> Remove
+                                                  </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div>
+                                        <div>
+                                            Queue progress:
+                                            <div class="progress" style="">
+                                                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                                              <span class="glyphicon glyphicon-upload"></span> Upload all
+                                          </button>
+                                        <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                                              <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                                          </button>
+                                        <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                                              <span class="glyphicon glyphicon-trash"></span> Remove all
+                                          </button>
+                                    </div>
+
                                 </div>
-                              <!-- /.box-body -->
+
                             </div>
 
-                            <div class="box">
-                                <div class="box-header">
-                                  <h3 class="box-title">Schedule</h3>
-                                </div>
-                                <div class="box-body">
-                                    8:00am - Introductions and Overview
-                                    
-                                    9:00am - Start Development
-                                    
-                                    11:00am - Informal break to connect with other teams
-                                    
-                                    12:15pm - Lunch break (lunch provided)
-                                    
-                                    2:30pm - Informal break to connect with other teams
-                                    
-                                    4:30pm - Team Presentations
-                                    
-                                    5:30pm - End of hackathon
-                                    
-                                    Coffee and snacks will be provided throughout the day
-                                  </div>
-                                <!-- /.box-body -->
-                              </div>
+                        
 
-                     </div>
-                   </div>
-                  </div>
-                  <!-- /.tab-pane -->
-                  <div class="tab-pane" id="tab_2">
-                    The European languages are members of the same family. Their separate existence is a myth.
-                    For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                    in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                    new common language would be desirable: one could refuse to pay expensive translators. To
-                    achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                    words. If several languages coalesce, the grammar of the resulting language is more simple
-                    and regular than that of the individual languages.
-                  </div>
-                  <!-- /.tab-pane -->
-                  <div class="tab-pane" id="tab_3">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    It has survived not only five centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                    like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <!-- /.tab-pane -->
+                    </div>
+
+                    <div class="tab-pane" id="tab_7">
+
+                        <style>
+                            .my-drop-zone {
+                                border: dotted 3px lightgray;
+                            }
+
+                            .nv-file-over {
+                                border: dotted 3px red;
+                            }
+
+                            /* Default class applied to drop zones on over */
+
+                            .another-file-over-class {
+                                border: dotted 3px green;
+                            }
+
+                            html,
+                            body {
+                                height: 100%;
+                            }
+                        </style>
+
+                        
+
+                            <div class="row">
+
+                                <div class="col-md-3">
+
+                                    <h3>Select files</h3>
+
+                                    <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader" class="well my-drop-zone">
+                                        Base drop zone
+                                    </div>
+
+                                    <div ng2FileDrop [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}" (fileOver)="fileOverAnother($event)" [uploader]="uploader" class="well my-drop-zone">
+                                        Another drop zone
+                                    </div>
+
+                                    Multiple
+                                    <input type="file" ng2FileSelect [uploader]="uploader" multiple /><br/> Single
+                                    <input type="file" ng2FileSelect [uploader]="uploader" />
+                                </div>
+
+                                <div class="col-md-9" style="margin-bottom: 40px">
+
+                                    <h3>Upload queue</h3>
+                                    <p>Queue length: {{ uploader?.queue?.length }}</p>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th width="50%">Name</th>
+                                                <th>Size</th>
+                                                <th>Progress</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of uploader.queue">
+                                                <td><strong>{{ item?.file?.name }}</strong></td>
+                                                <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                                                <td *ngIf="uploader.isHTML5">
+                                                    <div class="progress" style="margin-bottom: 0;">
+                                                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                                    <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                                </td>
+                                                <td nowrap>
+                                                    <button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                                      <span class="glyphicon glyphicon-upload"></span> Upload
+                                                  </button>
+                                                    <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
+                                                      <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                                  </button>
+                                                    <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
+                                                      <span class="glyphicon glyphicon-trash"></span> Remove
+                                                  </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div>
+                                        <div>
+                                            Queue progress:
+                                            <div class="progress" style="">
+                                                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-success btn-s"  (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                                              <span class="glyphicon glyphicon-upload"></span> Upload all
+                                          </button>
+                                        <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                                              <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                                          </button>
+                                        <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                                              <span class="glyphicon glyphicon-trash"></span> Remove all
+                                          </button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        
+
+                    </div>
+
+                    <div class="tab-pane" id="tab_8">
+                        <h2 class="page-header">Uploaded Files</h2>
+                        <table  class="table table-bordered table-hover table-sm table-responsive"  >
+                            <tbody>
+                                <tr *ngFor='let file of files'>
+                                    <td><a href="http://localhost:8080/{{file.file_name}}" target="_blank">{{file.file_name}}</a></td>
+                                </tr>
+                            </tbody>
+                          </table>
+                      </div>
+
+                    <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->
-              </div>
+            </div>
 
-            
+
         </section>
 
     </div>

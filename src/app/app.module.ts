@@ -37,18 +37,18 @@ import { EventPageComponent } from './components/event-page/event-page.component
 import { ConfigureEventComponent } from './components/configure-event/configure-event.component';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { TeamRegistrationComponent } from './components/team-registration/team-registration.component';
-import { SubmitArtifactComponent } from './components/submit-artifact/submit-artifact.component';
 import { FileUploadModule  } from 'ng2-file-upload';
 import { AppheaderComponent } from './components/appheader/appheader.component';
 import { EvalEventwiseRegisteredTeamsComponent } from './components/eval-eventwise-registered-teams/eval-eventwise-registered-teams.component';
 import { EvalTeamwiseSubmissionsComponent } from './components/eval-teamwise-submissions/eval-teamwise-submissions.component';
-import { AppmainComponent } from './components/appmain/appmain.component';
-import { UserEventwiseSubmissionsComponent } from './components/user-eventwise-submissions/user-eventwise-submissions.component';
-import { EvalSubmitEvaluationFormComponent } from './components/eval-submit-evaluation-form/eval-submit-evaluation-form.component';
+import { AppmainComponent } from './components/appmain/appmain.component';import { EvalSubmitEvaluationFormComponent } from './components/eval-submit-evaluation-form/eval-submit-evaluation-form.component';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { DemoComponent } from './components/demo/demo.component';
 import { GetTokenService } from './services/get-token.service';
-
+import { ContactResolve } from './contact.resolve';
+import { EventResolve } from './event.resolve';
+import { ContactsListComponent } from './contacts-list/contacts-list.component';
+import { ContactsDetailComponent } from './contacts-detail/contacts-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,14 +73,14 @@ import { GetTokenService } from './services/get-token.service';
     EventPageComponent,
     ConfigureEventComponent,
     TeamRegistrationComponent,
-    SubmitArtifactComponent,
     AppheaderComponent,
     EvalEventwiseRegisteredTeamsComponent,
     EvalTeamwiseSubmissionsComponent,
     AppmainComponent,
-    UserEventwiseSubmissionsComponent,
     EvalSubmitEvaluationFormComponent,
-    DemoComponent
+    DemoComponent,
+    ContactsListComponent,
+    ContactsDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +93,7 @@ import { GetTokenService } from './services/get-token.service';
     AngularDateTimePickerModule,
     FileUploadModule
   ],
-  providers: [AuthService,GetTokenService,AuthGuard, NotAuthGuard,AdminAuthGuard,AdminNotAuthGuard,EvaluatorAuthGuard,EvaluatorNotAuthGuard,HostAuthGuard,HostNotAuthGuard],
+  providers: [ContactResolve,EventResolve,AuthService,GetTokenService,AuthGuard, NotAuthGuard,AdminAuthGuard,AdminNotAuthGuard,EvaluatorAuthGuard,EvaluatorNotAuthGuard,HostAuthGuard,HostNotAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

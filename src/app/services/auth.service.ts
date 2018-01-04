@@ -129,8 +129,15 @@ export class AuthService {
   getEvents() {
     return this.http.get(this.domain + 'authentication/events').map(res => res.json());
    }
-   getTeams(username:any) {
-    return this.http.get(this.domain + 'authentication/team_details/' + username).map(res => res.json());
+   getEvent(_id:any) {
+    return this.http.get(this.domain + 'authentication/events/'+ _id).map(res => res.json());
+   }
+   getEventDetails(_id:any){
+    return this.http.get(this.domain + 'authentication/event_details/'+_id).map(res => res.json());
+   }
+
+   getTeam(username:any, _id:any) {
+    return this.http.get(this.domain + 'authentication/team_details/' + username+"/"+_id).map(res => res.json());
    }
    getEvalEventwiseTeams(event_id:any) {
     return this.http.get(this.domain + 'authentication/eval_eventwise_team_details/' + event_id).map(res => res.json());
@@ -141,9 +148,7 @@ export class AuthService {
    getUserTeamwiseSubmissions(team_id:any) {
     return this.http.get(this.domain + 'authentication/teamwise_files/' + team_id).map(res => res.json());
    }
-   getEvent(_id:any) {
-    return this.http.get(this.domain + 'authentication/events/'+ _id).map(res => res.json());
-   }
+   
    getEvaluationData(_id:any) {
     return this.http.get(this.domain + 'authentication/evaluation_data/'+ _id).map(res => res.json());
    }
@@ -158,7 +163,9 @@ export class AuthService {
       _id: updatedEvent._id,
       max_team_members: updatedEvent.max_team_members,
       max_ideas: updatedEvent.max_ideas,
-      prize: updatedEvent.prize,
+      prize1: updatedEvent.prize1,
+      prize2: updatedEvent.prize2,
+      prize3: updatedEvent.prize3,
       publish: updatedEvent.publish,
       evaluators_array:updatedEvent.evaluators_array,
     };
@@ -203,7 +210,10 @@ export class AuthService {
   
 
   
-  
+  checkRegistration(username:any , event_id:any){
+    return this.http.get(this.domain + 'authentication/check_registration/' + username +"/"+ event_id).map(res => res.json());
+  }
+
   // Function to register user accounts
   registerUser(user) {
     return this.http.post(this.domain + 'authentication/register', user).map(res => res.json());

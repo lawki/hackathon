@@ -54,14 +54,14 @@ export class ConfigureEventComponent implements OnInit {
   createForm(){
 		this.form = this.formBuilder.group({
       event_title: ['',Validators.required],
-      host_username: ['',Validators.required],
       event_description: [''],
       location:[''],
       max_team_members:[''],
       max_ideas:[''],
-      prize:[''],
+      prize1:[''],
+      prize2:[''],
+      prize3:[''],
       publish:[''],
-      hello:[''],
       evaluators_array: this.formBuilder.array([])
 		});
 		
@@ -81,7 +81,7 @@ export class ConfigureEventComponent implements OnInit {
   onConfigureRegisterSubmit(){
     const updated_event = {
       event_title: this.form.get('event_title').value, // E-mail input field
-      host_username: this.form.get('host_username').value, // Username input field
+      host_username: JSON.parse(localStorage.getItem('host')).host_username, // Username input field
       event_description: this.form.get('event_description').value, // Password input field
       start: this.start_date, 
       end: this.end_date,
@@ -89,9 +89,10 @@ export class ConfigureEventComponent implements OnInit {
       _id:this.event._id,
       max_team_members: this.form.get('max_team_members').value,
       max_ideas: this.form.get('max_ideas').value,
-      prize: this.form.get('prize').value,
+      prize1: this.form.get('prize1').value,
+      prize2: this.form.get('prize2').value,
+      prize3: this.form.get('prize3').value,
       publish: this.form.get('publish').value,
-      hello: this.form.get('hello').value,
       evaluators_array:this.form.get('evaluators_array').value,
     }
     console.log(updated_event);
@@ -105,13 +106,13 @@ export class ConfigureEventComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       this._id = params['_id'];
   });
-    this.authService.getEvent(this._id).subscribe(event=>
+    this.authService.getEvent(this._id).subscribe(data=>
       {
-        this.event=event;
-        this.start=event.start;
-        this.end=event.end;
-        this.start_date=event.start;
-        this.end_date=event.end;
+        this.event=data.event;
+        this.start=data.event.start;
+        this.end=data.event.end;
+        this.start_date=data.event.start;
+        this.end_date=data.event.end;
       });
       this.authService.getEvaluators().subscribe(evaluators=>
         {
