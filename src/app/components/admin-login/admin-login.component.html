@@ -1,10 +1,12 @@
-<div class="card card-login mx-auto mt-5">
+<div class="login-box card card-login mx-auto mt-5">
+		<div class="login-logo">
+				<a href="../../index2.html"><b>Admin Login</b></a>
+			</div>
 	<!-- Custom Success/Error Message -->
 	<div [ngClass]="messageClass">
     {{ message }}
 	</div>
-	
-      <div class="card-header">Admin Login</div>
+
       <div class="card-body">
         <form [formGroup]="form" (submit)="onAdminLoginSubmit()">
 		
