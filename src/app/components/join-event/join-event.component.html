@@ -1,0 +1,53 @@
+<div class="content-wrapper">
+  <div class="bg-navy-active color-palette">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-1">
+                  <p style="font-size:500%"><i class="fa fa-laptop" aria-hidden="true"></i></p>
+              </div>
+              <div class="col-lg-11" style="line-height:100%">
+                  <h1> {{ event.event_title }}</h1>
+                  <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{ event.display_time }}</p>
+                  <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ event.location }}</p>
+              </div>
+
+          </div>
+
+      </div>
+  </div>
+  <div class="container">
+      <section class="content">
+ <form [formGroup]="form" (submit)="onTeamRegisterSubmit()">
+
+            <div class="form-group">
+                <label for="exampleInputUsername">Team Name</label>
+                <input class="form-control" name="team_name" formControlName="team_name" id="team_name" type="text" placeholder="Enter team name">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputUsername">Team Member 1</label>
+                <input class="form-control" name="member1" formControlName="member1" id="member1" type="text" placeholder="Enter member1">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputUsername">Team Member 2</label>
+                <input class="form-control" name="member2" formControlName="member2" id="member2" type="text" placeholder="Enter member2">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputUsername">Team Member 3</label>
+                <input class="form-control" name="member3" formControlName="member3" id="member3" type="text" placeholder="Enter member3">
+            </div>
+
+            <div class="text-center">
+                <button [disabled]="!form.valid " type="submit" class="btn btn-primary btn-block" value="submit">Register Team</button>
+            </div>
+
+        </form>
+
+
+      </section>
+
+  </div>
+
+</div>

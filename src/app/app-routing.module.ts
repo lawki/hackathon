@@ -35,6 +35,7 @@ import { ContactsListComponent } from './contacts-list/contacts-list.component';
 import { ContactsDetailComponent } from './contacts-detail/contacts-detail.component';
 import { ContactResolve } from './contact.resolve';
 import { EventResolve } from './event.resolve';
+import { JoinEventComponent } from './components/join-event/join-event.component';
 
 const appRoutes: Routes = [
   {
@@ -43,6 +44,9 @@ const appRoutes: Routes = [
   },
   { path: 'mypage', 
     component: ContactsListComponent 
+  },
+  { path: 'join-event/:_id', 
+    component: JoinEventComponent 
   },
   { 
     path: 'contact/:id',
