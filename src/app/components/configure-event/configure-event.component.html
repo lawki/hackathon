@@ -115,6 +115,46 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-lg-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="prize1">Winner</label>
+                                        <div>
+                                            <select class="form-control" formControlName="winner1" name="winner1" [ngModel]="event.winner1">
+                                                <option *ngFor="let team of teams" [value]="team.team_name">
+                                                  {{team.team_name}}
+                                                </option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="prize1">Second Place</label>
+                                        <div>
+                                            <select class="form-control" formControlName="winner2" name="winner2" [ngModel]="event.winner2">
+                                                <option *ngFor="let team of teams" [value]="team.team_name">
+                                                  {{team.team_name}}
+                                                </option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="prize3">Third Place</label>
+                                        <div>
+
+                                            <select class="form-control" formControlName="winner3" name="winner3" [ngModel]="event.winner3">
+                                                <option *ngFor="let team of teams" [value]="team.team_name">
+                                                  {{team.team_name}}
+                                                </option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
     
     
                             <div class="row">

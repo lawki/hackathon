@@ -142,6 +142,9 @@ export class AuthService {
    getEvalEventwiseTeams(event_id:any) {
     return this.http.get(this.domain + 'authentication/eval_eventwise_team_details/' + event_id).map(res => res.json());
    }
+   getHostEventwiseTeams(event_id:any) {
+    return this.http.get(this.domain + 'authentication/host_eventwise_team_details/' + event_id).map(res => res.json());
+   }
    getEvalTeamwiseSubmissions(team_id:any) {
     return this.http.get(this.domain + 'authentication/teamwise_files/' + team_id).map(res => res.json());
    }
@@ -149,8 +152,8 @@ export class AuthService {
     return this.http.get(this.domain + 'authentication/teamwise_files/' + team_id).map(res => res.json());
    }
    
-   getEvaluationData(_id:any) {
-    return this.http.get(this.domain + 'authentication/evaluation_data/'+ _id).map(res => res.json());
+   getEvaluationData(_id:any,evaluator_username) {
+    return this.http.get(this.domain + 'authentication/evaluation_data/'+ _id + "/" + evaluator_username ).map(res => res.json());
    }
    updateEvent(updatedEvent:any) {
     var body={
@@ -166,6 +169,9 @@ export class AuthService {
       prize1: updatedEvent.prize1,
       prize2: updatedEvent.prize2,
       prize3: updatedEvent.prize3,
+      winner1: updatedEvent.winner1,
+      winner2: updatedEvent.winner2,
+      winner3: updatedEvent.winner3,
       publish: updatedEvent.publish,
       evaluators_array:updatedEvent.evaluators_array,
     };

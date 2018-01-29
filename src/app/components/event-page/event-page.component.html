@@ -26,18 +26,19 @@
                     <li><a href="#tab_4" data-toggle="tab">PRIZES</a></li>
                     <li><a href="#tab_5" data-toggle="tab">JUDGING</a></li>
                     <li *ngIf="isRegistered"><a href="#tab_6" data-toggle="tab">TEAM</a></li>
-                    <li *ngIf="isRegistered"><a href="#tab_7" data-toggle="tab">SUBMIT ARTIFACTS</a></li>
+                    <li *ngIf="isRegistered && event.archived == 'false' "><a href="#tab_7" data-toggle="tab">SUBMIT ARTIFACTS</a></li>
                     <li *ngIf="isRegistered"><a href="#tab_8" data-toggle="tab">SUBMISSIONS</a></li>
-                    <li *ngIf="isRegistered"><a href="#tab_9" data-toggle="tab"></a></li>
+                    <li *ngIf="event.archived == 'true'"><a href="#tab_9" data-toggle="tab">RESULT</a></li>
                    
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
                         <div class="row">
                             <div class="col-lg-3">
-                                <button *ngIf="!isRegistered" [disabled]="isRegistered" data-toggle="tab"  [routerLink]="['/join-event', _id]"  class="btn btn-xs btn-primary" type="button" class="btn btn-block btn-primary btn-lg">JOIN EVENT</button>
-                                <button *ngIf="isRegistered" [disabled]="isRegistered" class="btn btn-xs btn-primary" type="button" class="btn btn-block btn-danger btn-lg">JOINED</button>
-
+                                <button *ngIf="!isRegistered && event.archived == 'false'" [disabled]="isRegistered" data-toggle="tab"  [routerLink]="['/join-event', _id]"  class="btn btn-xs btn-primary" type="button" class="btn btn-block btn-primary btn-lg">JOIN EVENT</button>
+                                <button *ngIf="isRegistered && event.archived == 'false' " [disabled]="isRegistered" class="btn btn-xs btn-primary" type="button" class="btn btn-block btn-danger btn-lg">JOINED</button>
+                                <button *ngIf="event.archived == 'true'" disabled class="btn btn-xs btn-primary" type="button" class="btn btn-block btn-danger btn-lg">Event has ended</button>
+                                
                                 <br>
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Organizers</h3>
@@ -46,7 +47,7 @@
                                 <div class="box-body no-padding">
                                     <ul class="users-list clearfix">
                                         <li>
-                                            <img src="https://api.adorable.io/avatars/128/{{event.host_username}}" alt="User Image">
+                                            <img src="assets/dist/img/user-128.png" alt="User Image">
                                             <a class="users-list-name" href="#">{{ event.host_username }}</a>
                                         </li>
                                     </ul>
@@ -62,7 +63,7 @@
                                     <div class="box-body no-padding">
                                         <ul class="users-list clearfix">
                                             <li *ngFor="let evaluator of evaluators">
-                                                <img src="https://api.adorable.io/avatars/128/{{evaluator}}" alt="User Image">
+                                                <img src="assets/dist/img/user-128.png" alt="User Image">
                                                 <a class="users-list-name" href="#">{{ evaluator }}</a>
                                             </li>
                                         </ul>
@@ -72,7 +73,7 @@
 
                             </div>
                             <div class="col-lg-9">
-                                <div class="box box-primary">
+                                <div class="box">
                                     <div class="box-header with-border">
                                         <h3 class="box-title">About this Event</h3>
                                     </div>
@@ -82,7 +83,7 @@
                                     <!-- /.box-body -->
                                 </div>
 
-                                <div class="box box-primary">
+                                <div class="box">
                                     <div class="box-header">
                                         <h3 class="box-title">Prizes</h3>
                                     </div>
@@ -122,11 +123,9 @@
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_2">
-                        The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.
-                    </div>
+                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_3">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                     </div>
 
                     <div class="tab-pane" id="tab_4">
@@ -144,15 +143,15 @@
                         <div class="box-body no-padding">
                             <ul class="users-list clearfix">
                                 <li *ngIf="team.member1">
-                                    <img src="https://api.adorable.io/avatars/100/{{team?.member1 }}" alt="User Image">
+                                    <img height="100px" width="50px" src="assets/dist/img/user-128.png" alt="User Image">
                                     <a class="users-list-name" href="#">{{ team.member1 }}</a>
                                 </li>
                                 <li *ngIf="team.member2">
-                                    <img src="https://api.adorable.io/avatars/100/{{team?.member2 }}" alt="User Image">
+                                    <img height="100px" width="50px" src="assets/dist/img/user-128.png" alt="User Image">
                                     <a class="users-list-name" href="#">{{ team.member2 }}</a>
                                 </li>
                                 <li *ngIf="team.member3">
-                                    <img src="https://api.adorable.io/avatars/100/{{team.member3 }}" alt="User Image">
+                                    <img height="100px" width="50px"  src="assets/dist/img/user-128.png" alt="User Image">
                                     <a class="users-list-name" href="#">{{ team.member3 }}</a>
                                 </li>
                             </ul>
@@ -283,6 +282,55 @@
                                 </tr>
                             </tbody>
                           </table>
+                    </div>
+
+                    <div class="tab-pane" id="tab_9">
+                        <div class="row">
+                            <div class="col-md-4">
+                                    <div>
+                                            <div class="box-body box-profile">
+                                              <img class="profile-user-img img-responsive img-circle" src="assets/dist/img/team-128.png" alt="User profile picture">
+                                
+                                              <h3 class="profile-username text-center">{{event.winner1}}</h3>
+                                
+                                              <p class="text-muted text-center">Winner</p>
+                                
+                                            </div>
+                                            <!-- /.box-body -->
+                                    </div>
+                                    
+                            </div>
+                            <div class="col-md-4">
+                                    <div>
+                                            <div class="box-body box-profile">
+                                              <img class="profile-user-img img-responsive img-circle" src="assets/dist/img/team-128.png" alt="User profile picture">
+                                
+                                              <h3 class="profile-username text-center">{{event.winner2}}</h3>
+                                
+                                              <p class="text-muted text-center">Second Position</p>
+                                
+                                            </div>
+                                            <!-- /.box-body -->
+                                    </div>
+                                    
+                            </div>
+                            <div class="col-md-4">
+                                    <div>
+                                            <div class="box-body box-profile">
+                                              <img class="profile-user-img img-responsive img-circle" src="assets/dist/img/team-128.png" alt="User profile picture">
+                                
+                                              <h3 class="profile-username text-center">{{event.winner3}}</h3>
+                                
+                                              <p class="text-muted text-center">Third Position</p>
+                                
+                                            </div>
+                                            <!-- /.box-body -->
+                                    </div>
+                                    
+                            </div>
+                        </div>
+                    
+                    
                     </div>
                     <!-- /.tab-pane -->
                 </div>

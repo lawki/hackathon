@@ -11,24 +11,12 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  events: any[]= new Array;
-  accessToken:any=null;
-  accessResponse:any=null;
-  params:any;
+  
 
   constructor(
-    private router:Router,
-    private activatedRoute:ActivatedRoute,
-    private authService: AuthService,
-    private tokenService:GetTokenService
   ) { }
 
   ngOnInit() {
-    
-    
-        this.authService.getEvents().subscribe(data => {
-            this.events = data.events
-        });
     }
     
     }

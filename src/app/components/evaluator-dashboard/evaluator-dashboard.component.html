@@ -1,20 +1,32 @@
-<h2 class="page-header">Evaluator Dashboard</h2>
-<table  class="table table-bordered table-hover table-sm table-responsive"  >
-    <thead>
-        <tr>
-            <th >Title</th>
-            <th >Host</th>
-            <th >Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor='let evaluator_event of evaluator_events'>
-  
-            <td><a [routerLink]="['/eval-eventwise-registered-teams',evaluator_event._id]">{{ evaluator_event.event_title }}</a></td>
-            <td>{{ evaluator_event.host_username }}</td>
-            <td>{{ evaluator_event.event_description }}</td>
-            
-  
-        </tr>
-    </tbody>
-  </table>
+<div class="content-wrapper">
+        <div class="container">
+    
+            <section class="content">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Evaluator Dashboard</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th>Title</th>
+                                <th>Host</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr *ngFor='let evaluator_event of evaluator_events'>
+    
+                                <td><a [routerLink]="['/eval-eventwise-registered-teams',evaluator_event._id]">{{ evaluator_event.event_title }}</a></td>
+                                <td>{{ evaluator_event.host_username }}</td>
+                                <td>{{ evaluator_event.event_description }}</td>
+    
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+    
+            </section>
+    
+        </div>
+    </div>

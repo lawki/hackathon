@@ -35,7 +35,7 @@ export class DemoComponent implements OnInit {
               this.authService.storeLinkedInData(success.json().myToken, success.json().message, success.json().user);
               
               console.log(success.json());
-              this.router.navigate(['/profile']);
+              this.router.navigate(['/home']);
             },
             error=>{console.log("ERROR: "+error);return});
       }

@@ -98,7 +98,7 @@ export class EventPageComponent implements OnInit {
            };
            this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
             console.log("ImageUpload:uploaded:", item, status);
-            this.router.navigate(['/profile']);
+            this.router.navigate(['/event-page',this._id]);
            };
            this.authService.getUserTeamwiseSubmissions(this.team._id).subscribe(files=>
             {

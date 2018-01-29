@@ -46,7 +46,8 @@ const appRoutes: Routes = [
     component: ContactsListComponent 
   },
   { path: 'join-event/:_id', 
-    component: JoinEventComponent 
+    component: JoinEventComponent ,
+    canActivate: [AuthGuard] 
   },
   { 
     path: 'contact/:id',
@@ -80,7 +81,8 @@ const appRoutes: Routes = [
     component: EventPageComponent, // Dashboard Route,
     resolve: {
       event: EventResolve
-    }
+    },
+    canActivate: [AuthGuard]
   },
   {
     path: 'configure-event/:_id',

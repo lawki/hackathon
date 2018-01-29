@@ -17,8 +17,12 @@
   </div>
   <div class="container">
       <section class="content">
- <form [formGroup]="form" (submit)="onTeamRegisterSubmit()">
-
+            <div class="box box-primary" style="width:800px; margin:0 auto">
+            <div class="box-header with-border">
+                    <h3 class="box-title">Register Your Team</h3>
+                  </div>
+            <form [formGroup]="form" (submit)="onTeamRegisterSubmit()">
+                    <div class="box-body">
             <div class="form-group">
                 <label for="exampleInputUsername">Team Name</label>
                 <input class="form-control" name="team_name" formControlName="team_name" id="team_name" type="text" placeholder="Enter team name">
@@ -38,14 +42,15 @@
                 <label for="exampleInputUsername">Team Member 3</label>
                 <input class="form-control" name="member3" formControlName="member3" id="member3" type="text" placeholder="Enter member3">
             </div>
-
-            <div class="text-center">
-                <button [disabled]="!form.valid " type="submit" class="btn btn-primary btn-block" value="submit">Register Team</button>
+                    </div>
+            <div class="box-footer">
+                <button  [disabled]="!form.valid " type="submit" class="btn btn-primary" value="submit">Register Team</button>
+            
             </div>
 
-        </form>
+        </form> 
 
-
+        </div>
       </section>
 
   </div>

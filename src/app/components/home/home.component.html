@@ -15,13 +15,13 @@
                                 </div>
                                 <div class="col-lg-1 col-xs-6">
                                     <div>
-                                        <h3 style=" line-height:100% ; margin-left:30%"><i style="font-size:150%" class="fa fa-laptop" ></i></h3>
+                                        <h1 style=" line-height:50% ; margin-left:30%"><i class="fa fa-laptop" ></i></h1>
                                     </div>
                                 </div>
                                 <div class="col-lg-7  col-xs-12">
                                     <div>
-                                        <h3 style=" line-height:100% ;"><a [routerLink]="['/event-page',event._id]" style="color:whitesmoke">{{ event.event_title }}</a></h3>
-                                        
+                                            <h3 style=" line-height:30px ;"><a [routerLink]="['/event-page',event._id]" style="color:whitesmoke">{{ event.event_title }}</a></h3>
+                                            
                                     </div>
     
                                 </div>
@@ -41,62 +41,117 @@
     
             </div>
         </div>
-        <div  class="container">
-            <section class="content">
-                <div class="row">
-                    <div class="col-lg-4">
-                                    <div class="box-body">
-                                      <input class="form-control" type="text" placeholder="Search Hackathons">
-                                      <h3 style="text-align:center;margin:5px auto" >near</h3>
-                                      <input class="form-control" type="text" placeholder="Location">
-                                    </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="row">
-                                <div *ngFor='let event of events'>
-                                        <div >
-                                            <div class="bg-gray color-palette">
-                        
-                                                <div class="row">
-                        
-                                                    <div class="col-lg-2  col-xs-6">
-                                                        <div>
-                                                            <i style=" line-height:60px;margin-left:20%" class="fa fa-clock-o"></i> {{event.time}}
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-1 col-xs-6">
-                                                        <div>
-                                                            <h1 style=" line-height:50% ; margin-left:30%"><i class="fa fa-laptop" ></i></h1>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-7  col-xs-12">
-                                                        <div>
-                                                            <h3 style=" line-height:80% ;"><a [routerLink]="['/event-page',event._id]" style="color:black">{{ event.event_title }}</a></h3>
-                                                            
-                                                        </div>
-                        
-                                                    </div>
-                                                    <div class="col-lg-2  col-xs-12">
-                                                        <div>
-                                                            <h4 style=" line-height:50px"><i class="fa fa-map-marker"></i> {{ event.location }}</h4>
-                                                        </div>
-                        
-                                                    </div>
-                        
-                                                </div>
-                                            </div>
-                        
-                                            <br>
-                                        </div>
-                                    </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                
-            </section>
-
-        </div>
     
+        <div class="container">
+    
+            <section class="content">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Ongoing events</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Start Date and Time</th>
+                                        <th>End Date and Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor='let event of events'>
+    
+                                        <td *ngIf="event.live == 'true'"><a [routerLink]="['/event-page',event._id]">{{ event.event_title }}</a></td>
+                                        <td *ngIf="event.live == 'true'">{{ event.start | date: 'dd-MM-yyyy HH:mm'}}</td>
+                                        <td *ngIf="event.live == 'true'"> {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
+                                        <td *ngIf="event.live == 'true'"><a [routerLink]="['/join-event',event._id]" class="btn btn-xs btn-primary">Register</a></td>
+    
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+    
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Future events</h3>
+    
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Start Date and Time</th>
+                                        <th>End Date and Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor='let event of events'>
+    
+                                        <td *ngIf="event.future == 'true'"><a [routerLink]="['/event-page',event._id]">{{ event.event_title }}</a></td>
+                                        <td *ngIf="event.future == 'true'">{{ event.start| date: 'dd-MM-yyyy HH:mm' }}</td>
+                                        <td *ngIf="event.future == 'true'"> {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
+                                        <td *ngIf="event.future == 'true'"><a [routerLink]="['/join-event',event._id]" class="btn btn-xs btn-primary">Register</a></td>
+    
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+    
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Archived events</h3>
+    
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Start Date and Time</th>
+                                        <th>End Date and Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor='let event of events'>
+    
+                                        <td *ngIf="event.archived == 'true'"><a [routerLink]="['/event-page',event._id]">{{ event.event_title }}</a></td>
+                                        <td *ngIf="event.archived == 'true'">{{ event.start | date: 'dd-MM-yyyy HH:mm'}}</td>
+                                        <td *ngIf="event.archived == 'true'"> {{ event.end | date: 'dd-MM-yyyy HH:mm'}}</td>
+    
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+            </section>
+    
+        </div>
     </div>
