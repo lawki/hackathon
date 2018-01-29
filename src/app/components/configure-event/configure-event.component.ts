@@ -66,7 +66,7 @@ export class ConfigureEventComponent implements OnInit {
       winner2:[''],
       winner3:[''],
       publish:[''],
-      evaluators_array: this.formBuilder.array([])
+      evaluator_username: ['']
 		});
 		
   }
@@ -100,7 +100,7 @@ export class ConfigureEventComponent implements OnInit {
       winner2: this.form.get('winner2').value,
       winner3: this.form.get('winner3').value,
       publish: this.form.get('publish').value,
-      evaluators_array:this.form.get('evaluators_array').value,
+      evaluator_username:this.form.get('evaluator_username').value,
     }
     console.log(updated_event);
     this.authService.updateEvent(updated_event)
@@ -128,6 +128,7 @@ export class ConfigureEventComponent implements OnInit {
       this.authService.getEvaluators().subscribe(evaluators=>
         {
           this.evaluators=evaluators;
+          console.log(this.evaluators);
         });
         
  }

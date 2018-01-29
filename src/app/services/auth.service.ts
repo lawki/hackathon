@@ -173,7 +173,7 @@ export class AuthService {
       winner2: updatedEvent.winner2,
       winner3: updatedEvent.winner3,
       publish: updatedEvent.publish,
-      evaluators_array:updatedEvent.evaluators_array,
+      evaluator_username:updatedEvent.evaluator_username,
     };
     console.log(body);
     return this.http.put(this.domain + 'authentication/update-event/'+ body._id,body);

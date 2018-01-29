@@ -11,15 +11,11 @@
                             <tr>
                                 <th>username</th>
                                 <th>Team name</th>
-                                <th>Team ID</th>
-                                <th>Event ID</th>
                             </tr>
                             <tr *ngFor='let team of teams'>
     
                                 <td>{{ team.username }}</td>
                                 <td>{{ team.team_name }}</td>
-                                <td>{{ team._id }}</td>
-                                <td>{{ team.event_id }}</td>
                                 <td><a [routerLink]="['/eval-teamwise-submissions',team.event_title,team._id]" class="btn btn-xs btn-primary">View Submissions</a></td>
                                 <td><a [routerLink]="['/eval-submit-evaluation-form',evaluator_username,team._id]" class="btn btn-xs btn-primary">Submit Evaluation Form</a></td>
     

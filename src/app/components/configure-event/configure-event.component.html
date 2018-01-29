@@ -115,7 +115,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-lg-4 col-xs-12">
                                     <div class="form-group">
@@ -155,32 +154,15 @@
                                     </div>
                                 </div>
                             </div>
-    
-    
-                            <div class="row">
-                                <div class="col-lg-6 col-xs-12">
-                                        <div class="form-group">
-                                                <label for="location">Evaluators</label>
-                                                <div *ngFor="let evaluator of evaluators">
-                                                    <input type="checkbox" (change)="onChange(evaluator.evaluator_username, $event.target.checked)"> {{evaluator.evaluator_username}}
-                                                </div>
-                                            </div>
-
-                                </div>
-                                <div class="col-lg-6 col-xs-12">
-                                    <div class="form-group">
-                                        <label for="exampleInputUsername">Publish</label>
-                                        <div>
-                                            <select class="form-control" formControlName="publish" name="publish" [(ngModel)]="event.publish">
-                                                <option value="yes">Yes</option>
-                                                <option value="no">No</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
                             
+                            <div class="form-group">
+                                <label for="location">Evaluator</label>
+                                    <select class="form-control" formControlName="evaluator_username" name="evaluator_username" [ngModel]="event.evaluator_username">
+                                        <option *ngFor="let evaluator of evaluators" [value]="evaluator.evaluator_username">
+                                          {{evaluator.evaluator_username}}
+                                        </option>
+                                      </select>
+                                </div>
     
                             <div class="box-footer">
                                 <button [disabled]="!form.valid || processing" type="submit" class="btn btn-primary btn-block" value="submit">Submit</button>
