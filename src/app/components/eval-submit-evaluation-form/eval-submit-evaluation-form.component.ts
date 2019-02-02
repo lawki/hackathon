@@ -42,7 +42,7 @@ export class EvalSubmitEvaluationFormComponent implements OnInit {
       criteria1: this.form.get('criteria1').value,
       criteria2: this.form.get('criteria2').value,
       criteria3: this.form.get('criteria3').value,
-      comments: this.form.get('comments').value
+      comments: this.form.get('comments').value,
     }
     this.authService.updateEvaluationData(updatedEvaluationData)
     .subscribe((data:any)=>this._location.back(),err=>console.log(err));
@@ -56,7 +56,7 @@ export class EvalSubmitEvaluationFormComponent implements OnInit {
       this.evaluator_username=params['evaluator_username'];
     });
 
-    this.authService.getEvaluationData(this._id).subscribe(data=>
+    this.authService.getEvaluationData(this._id,this.evaluator_username).subscribe(data=>
       {
         this.data=data;
         console.log(data);

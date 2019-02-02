@@ -1,21 +1,35 @@
-<table >
-  <thead>
-      <tr>
-          <th >Title</th>
-          <th >Host</th>
-          <th >Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor='let host_event of host_events'>
+<div class="content-wrapper">
+    <div class="container">
 
-          <td><a [routerLink]="['/event-page',host_event._id]">{{ host_event.event_title }}</a></td>
-          <td>{{ host_event.host_username }}</td>
-          <td>{{ host_event.event_description }}</td>
-          <td><a [routerLink]="['/configure-event',host_event._id]" class="btn btn-xs btn-primary">Configure</a></td>
-          <td><a [routerLink]="['/event-page',host_event._id]" class="btn btn-xs btn-danger">Delete</a></td>
-          
+        <section class="content">
 
-      </tr>
-  </tbody>
-</table>
+                <div class="box">
+                        <div class="box-header">
+                                <h3 class="box-title">Events</h3>
+                            </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table class="table table-condensed">
+                                <tr>
+                                        <th >Title</th>
+                                        <th >Host</th>
+                                        <th >Description</th>
+                                </tr>
+                                <tr *ngFor='let host_event of host_events'>
+                                        
+                                                  <td><a [routerLink]="['/event-page',host_event._id]">{{ host_event.event_title }}</a></td>
+                                                  <td>{{ host_event.host_username }}</td>
+                                                  <td>{{ host_event.event_description }}</td>
+                                                  <td><a [routerLink]="['/configure-event',host_event._id]" class="btn btn-xs btn-primary">Configure</a></td>
+                                                  <td><a [routerLink]="['/event-page',host_event._id]" class="btn btn-xs btn-danger">Delete</a></td>
+                                                  
+                                        
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+
+            </section>
+    </div>
+</div>

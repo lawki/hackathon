@@ -49,6 +49,7 @@ import { ContactResolve } from './contact.resolve';
 import { EventResolve } from './event.resolve';
 import { ContactsListComponent } from './contacts-list/contacts-list.component';
 import { ContactsDetailComponent } from './contacts-detail/contacts-detail.component';
+import { JoinEventComponent } from './components/join-event/join-event.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +81,8 @@ import { ContactsDetailComponent } from './contacts-detail/contacts-detail.compo
     EvalSubmitEvaluationFormComponent,
     DemoComponent,
     ContactsListComponent,
-    ContactsDetailComponent
+    ContactsDetailComponent,
+    JoinEventComponent
   ],
   imports: [
     BrowserModule,

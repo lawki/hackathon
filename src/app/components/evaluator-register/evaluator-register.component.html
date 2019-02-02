@@ -1,66 +1,75 @@
-<div class="card card-register mx-auto mt-5">
-	<!-- Custom Success/Error Message -->
-	<div [ngClass]="messageClass">
-    {{ message }}
-  </div>
+<div class="content-wrapper" style="height:100%">
+    <div class="container">
+        <section class="content">
+            <div class="box box-primary" style="width:500px;margin:0 auto">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Add a Evaluator</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" [formGroup]="form" (submit)="onEvaluatorRegisterSubmit()">
+                  <div class="box-body">
+            
+                      <div class="form-group">
+                          <label for="exampleInputUsername">Evaluator Username</label>
+                          <div  [ngClass]="{'has-error': (form.controls.evaluator_username.errors && form.controls.evaluator_username.dirty), 'has-success': !form.controls.evaluator_username.errors}">
+                           <input class="form-control" name="evaluator_username" formControlName="evaluator_username" id="evaluator_username" type="text" placeholder="Enter Evaluator Username">
+                           <ul class="help-block" style="color:red">
+                            <li *ngIf="form.controls.evaluator_username.errors?.required && form.controls.evaluator_username.dirty">This field is required</li>
+                                <li *ngIf="form.controls.evaluator_username.errors?.minlength && form.controls.evaluator_username.dirty || form.controls.evaluator_username.errors?.maxlength && form.controls.evaluator_username.dirty ">Minimum characters: 3, Maximum characters: 15</li>
+                                <li *ngIf="form.controls.evaluator_username.errors?.validateUsername && form.controls.evaluator_username.dirty">Username must not have any special characters</li>
+                               
+                            </ul>
+                             </div>
+                          </div>
+                      
+                          <div class="form-group">
+                              <label for="exampleInputEmail1">Evaluator Email address</label>
+                              <div  [ngClass]="{'has-error': (form.controls.evaluator_email.errors && form.controls.evaluator_email.dirty), 'has-success': !form.controls.evaluator_email.errors}">
+                                 <input class="form-control" name="evaluator_email" formControlName="evaluator_email" id="exampleInputEmail1" type="email" placeholder="Enter Evaluator Email">
+                                 <ul class="help-block" style="color:red">
+                                   <li *ngIf="form.controls.evaluator_email.errors?.required && form.controls.evaluator_email.dirty">This field is required</li>
+                                       <li *ngIf="(form.controls.evaluator_email.errors?.minlength && form.controls.evaluator_email.dirty || form.controls.evaluator_email.errors?.maxlength && form.controls.evaluator_email.dirty ) && form.controls.evaluator_email.dirty">Minimum characters: 5, Maximum characters: 30</li>
+                                       <li *ngIf="form.controls.evaluator_email.errors?.validateEmail && form.controls.evaluator_email.dirty">This must be a valid e-mail</li>
+                                    </ul>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                      <label for="evaluator_password">Evaluator Password</label>
+                                      <div  [ngClass]="{'has-error': (form.controls.evaluator_password.errors && form.controls.evaluator_password.dirty), 'has-success': !form.controls.evaluator_password.errors}">
+                                         <input class="form-control" name="evaluator_password" formControlName="evaluator_password" id="evaluator_password" type="password" placeholder="Enter evaluator password">
+                                        <ul class="help-block" style="color:red">
+                                            <li *ngIf="form.controls.evaluator_password.errors?.required && form.controls.evaluator_password.dirty">This field is required</li>
+                                            <li *ngIf="form.controls.evaluator_password.errors?.minlength && form.controls.evaluator_password.dirty || form.controls.evaluator_password.errors?.maxlength && form.controls.evaluator_password.dirty ">Minimum characters: 8, Maximum characters: 35</li>
+                                         </ul>
+                                      </div>
+                                </div>
+                                  <div class="col-md-6">
+                                      <label for="evaluator_confirm">Confirm Password</label>
+                                      <div [ngClass]="{'has-error': (form.controls.evaluator_confirm.errors && form.controls.evaluator_confirm.dirty) || (form.errors?.matchingPasswords && form.controls.evaluator_confirm.dirty), 'has-success': !form.controls.evaluator_confirm.errors && !form.errors?.matchingPasswords}">
+                                       <input class="form-control" name="evaluator_confirm" formControlName="evaluator_confirm" id="evaluator_confirm" type="password" placeholder="Confirm evaluator password">
+                                        <ul class="help-block" style="color:red">
+                                         <li *ngIf="form.controls.evaluator_confirm.errors?.required && form.controls.evaluator_confirm.dirty">This field is required</li>
+                                         <li *ngIf="form.errors?.matchingPasswords && form.controls.evaluator_confirm.dirty">Password do not match</li>
+                                       </ul>
+                                     </div>
+                                </div>
+                              </div>
+                              </div>      
+            
+                  </div>
+                  <!-- /.box-body -->
+            
+                  <div class="box-footer">
+                      <button  [disabled]="!form.valid || processing" type="submit" class="btn btn-primary btn-block" value="submit">Register</button>
+                      
+                  </div>
+                </form>
+              </div>
+              <!-- /.box -->
 
-    <div class="card-header">Register a Evaluator Account</div>
-    <div class="card-body">
-      <form [formGroup]="form" (submit)="onEvaluatorRegisterSubmit()">
-	  
-        <div class="form-group">
-        <label for="exampleInputUsername">Evaluator Username</label>
-        <div  [ngClass]="{'has-error': (form.controls.evaluator_username.errors && form.controls.evaluator_username.dirty), 'has-success': !form.controls.evaluator_username.errors}">
-         <input class="form-control" name="evaluator_username" formControlName="evaluator_username" id="evaluator_username" type="text" placeholder="Enter Evaluator Username">
-         <ul class="help-block" style="color:red">
-          <li *ngIf="form.controls.evaluator_username.errors?.required && form.controls.evaluator_username.dirty">This field is required</li>
-              <li *ngIf="form.controls.evaluator_username.errors?.minlength && form.controls.evaluator_username.dirty || form.controls.evaluator_username.errors?.maxlength && form.controls.evaluator_username.dirty ">Minimum characters: 3, Maximum characters: 15</li>
-              <li *ngIf="form.controls.evaluator_username.errors?.validateUsername && form.controls.evaluator_username.dirty">Username must not have any special characters</li>
-             
-          </ul>
-           </div>
-		    </div>
-		
-        <div class="form-group">
-         <label for="exampleInputEmail1">Evaluator Email address</label>
-         <div  [ngClass]="{'has-error': (form.controls.evaluator_email.errors && form.controls.evaluator_email.dirty), 'has-success': !form.controls.evaluator_email.errors}">
-            <input class="form-control" name="evaluator_email" formControlName="evaluator_email" id="exampleInputEmail1" type="email" placeholder="Enter Evaluator Email">
-            <ul class="help-block" style="color:red">
-              <li *ngIf="form.controls.evaluator_email.errors?.required && form.controls.evaluator_email.dirty">This field is required</li>
-                  <li *ngIf="(form.controls.evaluator_email.errors?.minlength && form.controls.evaluator_email.dirty || form.controls.evaluator_email.errors?.maxlength && form.controls.evaluator_email.dirty ) && form.controls.evaluator_email.dirty">Minimum characters: 5, Maximum characters: 30</li>
-                  <li *ngIf="form.controls.evaluator_email.errors?.validateEmail && form.controls.evaluator_email.dirty">This must be a valid e-mail</li>
-               </ul>
-               </div>
-          </div>
-          
-        <div class="form-group">
-          <div class="form-row">
-            <div class="col-md-6">
-            <label for="evaluator_password">Evaluator Password</label>
-            <div  [ngClass]="{'has-error': (form.controls.evaluator_password.errors && form.controls.evaluator_password.dirty), 'has-success': !form.controls.evaluator_password.errors}">
-     		      <input class="form-control" name="evaluator_password" formControlName="evaluator_password" id="evaluator_password" type="password" placeholder="Enter evaluator password">
-              <ul class="help-block" style="color:red">
-                  <li *ngIf="form.controls.evaluator_password.errors?.required && form.controls.evaluator_password.dirty">This field is required</li>
-                  <li *ngIf="form.controls.evaluator_password.errors?.minlength && form.controls.evaluator_password.dirty || form.controls.evaluator_password.errors?.maxlength && form.controls.evaluator_password.dirty ">Minimum characters: 8, Maximum characters: 35</li>
-               </ul>
-            </div>
-          </div>
-            <div class="col-md-6">
-             <label for="evaluator_confirm">Confirm Password</label>
-             <div [ngClass]="{'has-error': (form.controls.evaluator_confirm.errors && form.controls.evaluator_confirm.dirty) || (form.errors?.matchingPasswords && form.controls.evaluator_confirm.dirty), 'has-success': !form.controls.evaluator_confirm.errors && !form.errors?.matchingPasswords}">
-              <input class="form-control" name="evaluator_confirm" formControlName="evaluator_confirm" id="evaluator_confirm" type="password" placeholder="Confirm evaluator password">
-               <ul class="help-block" style="color:red">
-			        	<li *ngIf="form.controls.evaluator_confirm.errors?.required && form.controls.evaluator_confirm.dirty">This field is required</li>
-			        	<li *ngIf="form.errors?.matchingPasswords && form.controls.evaluator_confirm.dirty">Password do not match</li>
-				      </ul>
-            </div>
-          </div>
-        </div>
-        </div>
-
-        <div class="text-center">
-       <button  [disabled]="!form.valid || processing" type="submit" class="btn btn-primary btn-block" value="submit">Register</button>
-      </div>
-      </form>
+        </section>
     </div>
-  </div>
+</div>

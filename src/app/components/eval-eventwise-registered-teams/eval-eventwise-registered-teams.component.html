@@ -1,23 +1,29 @@
-<h2 class="page-header">Registered teams</h2>
-<table  class="table table-bordered table-hover table-sm table-responsive"  >
-    <thead>
-        <tr>
-            <th >username</th>
-            <th >Team name</th>
-            <th >Team ID</th>
-            <th >Event ID</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor='let team of teams'>
-  
-            <td>{{ team.username }}</td>
-            <td>{{ team.team_name }}</td>
-            <td>{{ team._id }}</td>  
-            <td>{{ team.event_id }}</td>  
-            <td><a [routerLink]="['/eval-teamwise-submissions',team.event_title,team._id]" class="btn btn-xs btn-primary">View Submissions</a></td>
-            <td><a [routerLink]="['/eval-submit-evaluation-form',evaluator_username,team._id]" class="btn btn-xs btn-primary">Submit Evaluation Form</a></td>
-            
-        </tr>
-    </tbody>
-  </table>
+<div class="content-wrapper">
+        <div class="container">
+    
+            <section class="content">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Registered teams</h3>
+                    </div>
+                    <div class="box-body no-padding">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th>username</th>
+                                <th>Team name</th>
+                            </tr>
+                            <tr *ngFor='let team of teams'>
+    
+                                <td>{{ team.username }}</td>
+                                <td>{{ team.team_name }}</td>
+                                <td><a [routerLink]="['/eval-teamwise-submissions',team.event_title,team._id]" class="btn btn-xs btn-primary">View Submissions</a></td>
+                                <td><a [routerLink]="['/eval-submit-evaluation-form',evaluator_username,team._id]" class="btn btn-xs btn-primary">Submit Evaluation Form</a></td>
+    
+                            </tr>
+                        </table>
+                    </div>
+    
+                </div>
+            </section>
+        </div>
+    </div>

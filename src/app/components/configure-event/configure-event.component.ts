@@ -16,6 +16,7 @@ export class ConfigureEventComponent implements OnInit {
   _id: any;
   event: any={};
   evaluators: any[]= new Array;
+  teams: any[]= new Array;
 
   form:FormGroup;
   message;
@@ -61,8 +62,11 @@ export class ConfigureEventComponent implements OnInit {
       prize1:[''],
       prize2:[''],
       prize3:[''],
+      winner1:[''],
+      winner2:[''],
+      winner3:[''],
       publish:[''],
-      evaluators_array: this.formBuilder.array([])
+      evaluator_username: ['']
 		});
 		
   }
@@ -92,8 +96,11 @@ export class ConfigureEventComponent implements OnInit {
       prize1: this.form.get('prize1').value,
       prize2: this.form.get('prize2').value,
       prize3: this.form.get('prize3').value,
+      winner1: this.form.get('winner1').value,
+      winner2: this.form.get('winner2').value,
+      winner3: this.form.get('winner3').value,
       publish: this.form.get('publish').value,
-      evaluators_array:this.form.get('evaluators_array').value,
+      evaluator_username:this.form.get('evaluator_username').value,
     }
     console.log(updated_event);
     this.authService.updateEvent(updated_event)
@@ -106,6 +113,10 @@ export class ConfigureEventComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       this._id = params['_id'];
   });
+  this.authService.getHostEventwiseTeams(this._id).subscribe(teams=>
+    {
+      this.teams=teams;
+    });
     this.authService.getEvent(this._id).subscribe(data=>
       {
         this.event=data.event;
@@ -117,6 +128,7 @@ export class ConfigureEventComponent implements OnInit {
       this.authService.getEvaluators().subscribe(evaluators=>
         {
           this.evaluators=evaluators;
+          console.log(this.evaluators);
         });
         
  }

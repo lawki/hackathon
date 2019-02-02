@@ -115,32 +115,54 @@
                                     </div>
                                 </div>
                             </div>
-    
-    
                             <div class="row">
-                                <div class="col-lg-6 col-xs-12">
-                                        <div class="form-group">
-                                                <label for="location">Evaluators</label>
-                                                <div *ngFor="let evaluator of evaluators">
-                                                    <input type="checkbox" (change)="onChange(evaluator.evaluator_username, $event.target.checked)"> {{evaluator.evaluator_username}}
-                                                </div>
-                                            </div>
-
-                                </div>
-                                <div class="col-lg-6 col-xs-12">
+                                <div class="col-lg-4 col-xs-12">
                                     <div class="form-group">
-                                        <label for="exampleInputUsername">Publish</label>
+                                        <label for="prize1">Winner</label>
                                         <div>
-                                            <select class="form-control" formControlName="publish" name="publish" [(ngModel)]="event.publish">
-                                                <option value="yes">Yes</option>
-                                                <option value="no">No</option>
-                                            </select>
+                                            <select class="form-control" formControlName="winner1" name="winner1" [ngModel]="event.winner1">
+                                                <option *ngFor="let team of teams" [value]="team.team_name">
+                                                  {{team.team_name}}
+                                                </option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="prize1">Second Place</label>
+                                        <div>
+                                            <select class="form-control" formControlName="winner2" name="winner2" [ngModel]="event.winner2">
+                                                <option *ngFor="let team of teams" [value]="team.team_name">
+                                                  {{team.team_name}}
+                                                </option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="prize3">Third Place</label>
+                                        <div>
+
+                                            <select class="form-control" formControlName="winner3" name="winner3" [ngModel]="event.winner3">
+                                                <option *ngFor="let team of teams" [value]="team.team_name">
+                                                  {{team.team_name}}
+                                                </option>
+                                              </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-    
                             
+                            <div class="form-group">
+                                <label for="location">Evaluator</label>
+                                    <select class="form-control" formControlName="evaluator_username" name="evaluator_username" [ngModel]="event.evaluator_username">
+                                        <option *ngFor="let evaluator of evaluators" [value]="evaluator.evaluator_username">
+                                          {{evaluator.evaluator_username}}
+                                        </option>
+                                      </select>
+                                </div>
     
                             <div class="box-footer">
                                 <button [disabled]="!form.valid || processing" type="submit" class="btn btn-primary btn-block" value="submit">Submit</button>
